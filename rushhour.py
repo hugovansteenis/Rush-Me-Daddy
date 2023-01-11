@@ -9,20 +9,21 @@ class Game():
         self.game = game
         self.load_input(f"gameboards/{game}")
 
-    def load_input(self, filename):
-        with open(filename) as f:
-            csv_reader = csv.reader(f, delimiter=',')
-            next(csv_reader)
-            for row in csv_reader:
-                    car = Car(row[0], row[1], row[2], row[3], row[4])
-                    print(car)
 
+    def load_input(self, filename):
         if self.game[8].isnumeric():
             number = self.game[8]
             if self.game[9].isnumeric():
                 number += self.game[9]
-            grid = Grid(number)
-            print(grid)
+            self.grid = Grid(number)
+        
+        with open(filename) as f:
+            csv_reader = csv.reader(f, delimiter=',')
+            next(csv_reader)
+            for row in csv_reader:
+                car = Car(row[0], row[1], row[2], row[3], row[4])
+                self.grid.add_car(car)
+        print(self.grid)
         
 
 if __name__ == "__main__":
