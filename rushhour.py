@@ -1,6 +1,5 @@
 from car import Car
 from grid import Grid
-from history import History
 import csv
 
 class Game():
@@ -10,7 +9,6 @@ class Game():
         self.game = game
         self.grid = 0
         self.load_input(f"gameboards/{game}")
-        self.exit_car_type = "X"
         self.history = []
 
     def load_input(self, filename):
@@ -35,19 +33,17 @@ class Game():
             if self.red_unblocked():
                 print("You Win")
                 self.output_to_csv("solution.csv")
+                return True
+            return False
 
     def red_unblocked(self):
         exit_car = None 
         for car in self.grid.cars:
-            if car.type == self.exit_car_type:
+            if car.type == 'X':
                 exit_car = car 
                 break
-        if exit_car.orientation == "H":
-            if self.grid.board[exit_car.row][exit_car.col - 1] == 0  and self.grid.board[exit_car.row][exit_car.row + exit_car.length] == 0:
-                return True
-        else: 
-            if self.grid.board[exit_car.row - 1][exit_car.col] == 0 and self.grid.board[exit_car.row + exit_car.length][exit_car.col] == 0:
-                return True
+        if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
+            return True
         return False
 
     def output_to_csv(self, filename):
@@ -75,4 +71,6 @@ if __name__ == "__main__":
         game.grid.print_grid()
         move = input("What car do you want to move? ")
         x = move.split()
-        game.move_car(x[0], x[1], x[2])
+        if game.move_car(x[0], x[1], x[2]):
+            break
+
