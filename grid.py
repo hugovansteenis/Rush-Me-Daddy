@@ -1,11 +1,14 @@
 from car import Car
+from colorama import Fore, Style, Back
+from colors import COLORS
+import random
 
 class Grid():
     """Holds all elements of a Grid."""
 
     def __init__(self, width):
         self.width = int(width)
-        self.board = [['0' for i in range(self.width)] for j in range(self.width)]
+        self.board = [['_' for i in range(self.width)] for j in range(self.width)]
         self.cars = []
 
     def add_car(self, car):
@@ -31,26 +34,26 @@ class Grid():
                 if car.col - places >= 0:
                     for i in range(car.col - (places + 1), car.col - (places + 1) + car.length):
                         counter += 1
-                        if self.board[car.row - 1][i] != '0' and self.board[car.row - 1][i] != car.type:
+                        if self.board[car.row - 1][i] != '_' and self.board[car.row - 1][i] != car.type:
                             return False
                     return True
             elif direction == "right":
                 if car.col + places + car.length - 1 < self.width:
                     for i in range(car.col + (places - 1), car.col + (places - 1) + car.length):
-                        if self.board[car.row - 1][i] != '0' and self.board[car.row - 1][i] != car.type:
+                        if self.board[car.row - 1][i] != '_' and self.board[car.row - 1][i] != car.type:
                             return False
                     return True 
         else:
             if direction == "up":
                 if car.row - places >= 0:
                     for i in range(car.row - (places + 1), car.row - (places + 1) + car.length):
-                        if self.board[i][car.col - 1] != '0' and self.board[i][car.col - 1] != car.type:
+                        if self.board[i][car.col - 1] != '_' and self.board[i][car.col - 1] != car.type:
                             return False 
                     return True
             elif direction == "down":
                 if car.row + places + car.length - 1 <= self.width:
                     for i in range(car.row + (places - 1), car.row + (places - 1) + car.length):
-                        if self.board[i][car.col - 1] != '0' and self.board[i][car.col - 1] != car.type:
+                        if self.board[i][car.col - 1] != '_' and self.board[i][car.col - 1] != car.type:
                             print(self.board[i][car.col - 1])
                             return False
                     return True
@@ -58,7 +61,7 @@ class Grid():
 
 
     def refresh_grid(self):
-        self.board = [['0' for i in range(self.width)] for j in range(self.width)]
+        self.board = [['_' for i in range(self.width)] for j in range(self.width)]
         for car in self.cars:
             x, y = car.col, car.row
             if car.orientation == "H":
@@ -69,8 +72,11 @@ class Grid():
                     self.board[i - 1][car.col - 1] = car.type 
 
     def print_grid(self):
-        for row in self.board:
-            print(row)
+        for i in range(self.width):
+            for j in range(self.width):
+                color = COLORS[self.board[i][j]]
+                print(f"  {color}{self.board[i][j]}{Style.RESET_ALL}", end="")
+            print()
 
     def __str__(self):
         return "\n".join(str(row) for row in self.board)
