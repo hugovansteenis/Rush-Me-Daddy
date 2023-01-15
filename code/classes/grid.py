@@ -1,6 +1,6 @@
-from car import Car
+from .car import Car
 from colorama import Fore, Style, Back
-from colors import COLORS
+from code.visualisation.colors import COLORS
 import random
 
 class Grid():
@@ -28,17 +28,15 @@ class Grid():
     
     def can_move(self, car, direction, places):
         places = int(places)
-        counter = 0 
         if car.orientation == "H":
             if direction == "left":
                 if car.col - places >= 0:
                     for i in range(car.col - (places + 1), car.col - (places + 1) + car.length):
-                        counter += 1
                         if self.board[car.row - 1][i] != '_' and self.board[car.row - 1][i] != car.type:
                             return False
                     return True
             elif direction == "right":
-                if car.col + places + car.length - 1 < self.width:
+                if car.col + places + car.length - 1 <= self.width:
                     for i in range(car.col + (places - 1), car.col + (places - 1) + car.length):
                         if self.board[car.row - 1][i] != '_' and self.board[car.row - 1][i] != car.type:
                             return False
@@ -75,7 +73,10 @@ class Grid():
         for i in range(self.width):
             for j in range(self.width):
                 color = COLORS[self.board[i][j]]
-                print(f"  {color}{self.board[i][j]}{Style.RESET_ALL}", end="")
+                if len(self.board[i][j]) == 1:
+                    print(f"   {color}{self.board[i][j]}{Style.RESET_ALL}", end="")
+                else:
+                    print(f"  {color}{self.board[i][j]}{Style.RESET_ALL}", end="")
             print()
 
     def __str__(self):

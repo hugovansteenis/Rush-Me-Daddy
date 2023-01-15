@@ -1,5 +1,5 @@
-from car import Car
-from grid import Grid
+from .car import Car
+from .grid import Grid
 import csv
 
 class Game():
@@ -8,7 +8,7 @@ class Game():
     def __init__(self, game):
         self.game = game
         self.grid = 0
-        self.load_input(f"gameboards/{game}")
+        self.load_input(f"data/{game}")
         self.history = []
 
     def load_input(self, filename):
@@ -42,7 +42,7 @@ class Game():
             if car.type == 'X':
                 exit_car = car 
                 break
-        if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
+        if self.grid.board[exit_car.row - 1][self.grid.width - 1] == 'X':
             return True
         return False
 
