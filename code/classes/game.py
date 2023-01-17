@@ -35,6 +35,7 @@ class Game():
             if self.red_unblocked():
                 print("You Win")
                 self.grid.print_grid()
+                print(len(self.history))
                 self.output_to_csv("solution.csv")
                 return True
             return False
