@@ -39,7 +39,7 @@ class Grid():
             elif movement[0].isnumeric():
                 places = int(movement[0:length])
                 if car.col + places + car.length <= self.width:
-                    for i in range(car.col + places, car.col + places + car.length):
+                    for i in range(car.col , car.col + places + car.length):
                         if self.board[car.row][i] != '_' and self.board[car.row][i] != car.type:
                             return False
                     return True 
@@ -54,7 +54,7 @@ class Grid():
             elif movement[0].isnumeric():
                 places = int(movement[0:length])
                 if car.row + places + car.length <= self.width:
-                    for i in range(car.row + places, car.row + places + car.length):
+                    for i in range(car.row , car.row + places + car.length):
                         if self.board[i][car.col] != '_' and self.board[i][car.col] != car.type:
                             return False
                     return True
