@@ -25,11 +25,12 @@ class Game():
                 car = Car(row[0], row[1], row[2], row[3], row[4])
                 self.grid.add_car(car)
 
-    def move_car(self, car_type, direction, places):
-        if not self.grid.move_car(car_type, direction, places):
+    def move_car(self, car_type, movement):
+        if not self.grid.move_car(car_type, movement):
             print("Can't move the car in that direction")
         else:
-            self.history.append((car_type, direction, places))
+            self.history.append((car_type, movement))
+            self.grid.print_grid()
             if self.red_unblocked():
                 print("You Win")
                 self.output_to_csv("solution.csv")
@@ -42,13 +43,13 @@ class Game():
             if car.type == 'X':
                 exit_car = car 
                 break
-        if self.grid.board[exit_car.row - 1][self.grid.width - 1] == 'X':
+        if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
             return True
         return False
 
     def output_to_csv(self, filename):
         with open(filename, "w") as file:
             writer = csv.writer(file)
-            writer.writerow(["Car", "Direction", "Places"])
+            writer.writerow(["car", "move"])
             for move in self.history:
                 writer.writerow(move)
