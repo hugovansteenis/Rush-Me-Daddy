@@ -15,11 +15,11 @@ if __name__ == "__main__":
 
     test_game.grid.print_grid()
 
-    solve_rushhour(test_game)
+    # solve_rushhour(test_game)
 
-    # while True:
-    #     move = input("Which car do you want to move? (e.g. A -1) ")
-    #     x = move.split()
-    #     if test_game.move_car(x[0], x[1]):
-    #         break
+    while True:
+        move = input("Which car do you want to move? (e.g. A -1) ")
+        x = move.split()
+        if test_game.move_car(x[0], x[1]):
+            break
 
