@@ -22,4 +22,5 @@ if __name__ == "__main__":
     #     x = move.split()
     #     if test_game.move_car(x[0], x[1]):
     #         break
+    #     test_game.grid.print_grid()
 
