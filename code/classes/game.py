@@ -27,10 +27,11 @@ class Game():
 
     def move_car(self, car_type, movement):
         if not self.grid.move_car(car_type, movement):
-            print("Can't move the car in that direction")
+            #print("You can't make this movement!")
+            pass
         else:
             self.history.append((car_type, movement))
-            self.grid.print_grid()
+            # self.grid.print_grid()
             if self.red_unblocked():
                 print("You Win")
                 self.output_to_csv("solution.csv")
