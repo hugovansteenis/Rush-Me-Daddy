@@ -5,8 +5,8 @@ if __name__ == "__main__":
 
     from sys import argv
 
-    if len(argv) != 2:
-        print("Usage: python rushhour.py [gameboardfile]")
+    if len(argv) == 1:
+        print("Usage: python rushhour.py [gameboardfile] (algorithm)")
         exit(1)
 
     game_name = argv[1]
@@ -15,12 +15,20 @@ if __name__ == "__main__":
 
     test_game.grid.print_grid()
 
-    solve_rushhour(test_game)
+    if len(argv) > 2:
+        if argv[2] == "algorithm":
+            solve_rushhour(test_game)
+            exit(2)
+        else:
+            print("Wrong algorithm usage")
+    else:
+        while True:
+            move = input("Which car do you want to move? (e.g. A -1) ")
+            x = move.split()
+            if test_game.move_car(x[0], int(x[1])):
+                break
+            test_game.grid.print_grid()
 
-    # while True:
-    #     move = input("Which car do you want to move? (e.g. A -1) ")
-    #     x = move.split()
-    #     if test_game.move_car(x[0], x[1]):
-    #         break
-    #     test_game.grid.print_grid()
+
+    
 

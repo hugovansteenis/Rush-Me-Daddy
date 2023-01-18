@@ -7,7 +7,7 @@ def solve_rushhour(game):
     exclude_zero = {0}
     numbers = list(num for num in moves if num not in exclude_zero)
     while not game.red_unblocked():
-        move = str(random.choice(numbers))
+        move = random.choice(numbers)
         kar = random.choice(game.grid.cars)
         cartype = kar.type
         game.move_car(cartype, move)

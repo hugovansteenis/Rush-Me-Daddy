@@ -27,34 +27,29 @@ class Grid():
         return False
     
     def can_move(self, car, movement):
-        length = len(movement)
         if car.orientation == "H":
-            if movement[0] == '-':
-                places = int(movement[1:length])
-                if car.col - places >= 0:
-                    for i in range(car.col - places, car.col):
+            if movement < 0:
+                if car.col + movement >= 0:
+                    for i in range(car.col + movement, car.col):
                         if self.board[car.row][i] != '_' and self.board[car.row][i] != car.type:
                             return False
                     return True
-            elif movement[0].isnumeric():
-                places = int(movement[0:length])
-                if car.col + places + car.length <= self.width:
-                    for i in range(car.col, car.col + places + car.length):
+            else:
+                if car.col + movement + car.length <= self.width:
+                    for i in range(car.col, car.col + movement + car.length):
                         if self.board[car.row][i] != '_' and self.board[car.row][i] != car.type:
                             return False
                     return True 
         else:
-            if movement[0] == '-':
-                places = int(movement[1:length])
-                if car.row - places >= 0:
-                    for i in range(car.row - places, car.row):
+            if movement < 0:
+                if car.row + movement >= 0:
+                    for i in range(car.row + movement, car.row):
                         if self.board[i][car.col] != '_' and self.board[i][car.col] != car.type:
                             return False 
                     return True
-            elif movement[0].isnumeric():
-                places = int(movement[0:length])
-                if car.row + places + car.length <= self.width:
-                    for i in range(car.row, car.row + places + car.length):
+            else:
+                if car.row + movement + car.length <= self.width:
+                    for i in range(car.row, car.row + movement + car.length):
                         if self.board[i][car.col] != '_' and self.board[i][car.col] != car.type:
                             return False
                     return True
