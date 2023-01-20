@@ -13,7 +13,8 @@ class Game():
         self.history = []
 
     def load_input(self, filename):
-        """(insert description)"""
+        """Checks the grid size in the file name.
+        Also reads the input data given and creates all the car objects."""
         if self.game[8].isnumeric():
             number = self.game[8]
             if self.game[9].isnumeric():
@@ -29,7 +30,9 @@ class Game():
                 self.grid.add_car(car)
 
     def move_car(self, car_type, movement):
-        """(insert description)"""
+        """Uses the move_car function made in the grid class to move.
+        Also checks if the red car is at the destination it is meant to be to win.
+        If so it prints the moves of all the cars into the output.csv file."""
         if not self.grid.move_car(car_type, movement):
             pass
         else:
@@ -45,7 +48,8 @@ class Game():
             return False
 
     def red_unblocked(self):
-        """(insert description)"""
+        """Checks if the red car is unblocked and if it can move to the end of the board/grid
+        also checks if the red car is at the end of the board/grid."""
         exit_car = None 
         for car in self.grid.cars:
             if car.type == 'X':
@@ -57,7 +61,7 @@ class Game():
         return False
 
     def output_to_csv(self, filename):
-        """(insert description)"""
+        """Creates an output file which writes down all the cars that made moves and which moves they made."""
         with open(filename, "w") as file:
             writer = csv.writer(file)
             writer.writerow(["car", "move"])

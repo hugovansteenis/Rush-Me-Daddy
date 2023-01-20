@@ -7,18 +7,19 @@ class Grid():
     """Holds all elements of a Grid."""
 
     def __init__(self, width):
-        """(insert description)"""
+        """Defines the grid for the rush hour game and creates an empty list for the cars to be put in."""
         self.width = int(width)
         self.board = [['_' for i in range(self.width)] for j in range(self.width)]
         self.cars = []
 
     def add_car(self, car):
-        """(insert description)"""
+        """Adds the cars to the grid onto their position and refreshes the grid."""
         self.cars.append(car)
         self.refresh_grid()
 
     def move_car(self, car_type, movement):
-        """(insert description)"""
+        """Checks if the chosen car is existing. If this is the case checks if the chosen car
+        can move the requested amount of spaces."""
         for car in self.cars:
             # Checks if the input car is on the grid
             if car.type == car_type:
@@ -30,8 +31,10 @@ class Grid():
                     return True
         return False
     
+    
     def can_move(self, car, movement):
-        """(insert description)"""
+        """Checks if the car doesn't make an illegal movement like moving at a space which is already occupied,
+        or if the car is trying to move outside the grid."""
         if car.orientation == "H":
             # Checks negative movement
             if movement < 0:
@@ -49,7 +52,7 @@ class Grid():
                     for i in range(car.col, car.col + movement + car.length):
                         if self.board[car.row][i] != '_' and self.board[car.row][i] != car.type:
                             return False
-                    return True 
+                    return True
         else:
             # Checks negative movement
             if movement < 0:
@@ -72,7 +75,7 @@ class Grid():
 
 
     def refresh_grid(self):
-        """(insert description)"""
+        """Goes through the board after a made move and updates/refreshes it."""
         self.board = [['_' for i in range(self.width)] for j in range(self.width)]
         # Places all the cars in the 2D array
         for car in self.cars:
@@ -85,7 +88,7 @@ class Grid():
                     self.board[i][car.col] = car.type 
 
     def print_grid(self):
-        """(insert description)"""
+        """Prints the grid with the cars and empty spaces on it."""
         for i in range(self.width):
             for j in range(self.width):
                 # Gets the color of the car
