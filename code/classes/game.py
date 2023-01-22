@@ -1,5 +1,9 @@
 from .car import Car
 from .grid import Grid
+from matplotlib.patches import Rectangle
+from matplotlib import animation
+import matplotlib.pyplot as plt
+import random
 import csv
 
 class Game():
@@ -8,9 +12,10 @@ class Game():
     def __init__(self, game):
         """(insert description)"""
         self.game = game
-        self.grid = 0
+        self.grid = 0 
         self.load_input(f"data/{game}")
         self.history = []
+        self.rectangles = []
 
     def load_input(self, filename):
         """Checks the grid size in the file name.
@@ -20,6 +25,7 @@ class Game():
             if self.game[9].isnumeric():
                 number += self.game[9]
             self.grid = Grid(number)
+            number = int(number)
         
         # Reads the inputdata and creates all the necessary cars objects
         with open(filename) as f:
@@ -68,3 +74,42 @@ class Game():
             # Retrieves all the moves in history and writes these into the outputfile
             for move in self.history:
                 writer.writerow(move)
+    
+    def animate_cars(self):
+        """Creates all the car-rectangles for the animation."""
+        for car in self.grid.cars:
+            # Gets a random color for the car (https://www.adamsmith.haus/python/answers/how-to-generate-a-random-color-for-a-matplotlib-plot-in-python)
+            red = random.random()
+            green = random.random()
+            blue = random.random()
+            colour = (red, green, blue)
+
+            # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
+            if car.orientation == 'H' and car.type != 'X':
+                self.rectangles.append(Rectangle((car.col, car.row), car.length, 1, facecolor = colour, edgecolor = 'black', label = car.type))
+            elif car.type == 'X':
+                self.rectangles.append(Rectangle((car.col, car.row), 2, 1, facecolor = 'red', edgecolor = 'black', label = car.type))
+            elif car.orientation == 'V' and car.length ==  3:
+                self.rectangles.append(Rectangle((car.col, car.row), 1, 3, facecolor = colour, edgecolor = 'black', label = car.type))
+            else:
+                self.rectangles.append(Rectangle((car.col, car.row), 1, car.length, facecolor = colour, edgecolor = 'black', label = car.type))
+
+    def create_animationboard(self):
+        """Creates the board and places all the rectangles."""
+        # Creates a subplot (https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
+        fig, ax = plt.subplots()
+        ax.set_xlim(0, self.grid.width)
+        ax.set_ylim(self.grid.width, 0)
+        ax.set_yticklabels([])
+        ax.set_xticklabels([])
+
+        # Places all the rectangles on the board. (https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.add_patch.html)
+        for rec in self.rectangles:
+            ax.add_patch(rec)
+
+        # Adds a legend to the graph and makes the graph into a square.
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
+          fancybox=True, shadow=True, ncol=5)
+        ax.set_aspect('equal', adjustable='box')
+
+        return plt
