@@ -1,5 +1,5 @@
 from .car import Car
-from colorama import Fore, Style, Back
+from colorama import Style
 from code.visualisation.colors import COLORS
 import random
 
@@ -111,7 +111,10 @@ class Grid():
         for row in self.board:
             for item in row:
                 color = COLORS[item]
-                print(f"  {color}{item}{Style.RESET_ALL}", end="")
+                if len(item) == 1:
+                    print(f"   {color}{item}{Style.RESET_ALL}", end="")
+                else:
+                    print(f"  {color}{item}{Style.RESET_ALL}", end="")
             print()
 
     # def print_grid(self):
