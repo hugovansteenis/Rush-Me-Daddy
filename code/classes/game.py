@@ -61,10 +61,34 @@ class Game():
             if car.type == 'X':
                 exit_car = car 
                 break
-        # Checks if the red car is at the end of the board
+        if exit_car.orientation == "H":
+            # Check if there is any car blocking the red car from moving to the right
+            for i in range(exit_car.col + exit_car.length, self.grid.width):
+                if self.grid.board[exit_car.row][i] != '_':
+                    return False
+        else:
+            # Check if there is any car blocking the red car from moving down
+            for i in range(exit_car.row + exit_car.length, self.grid.width):
+                if self.grid.board[i][exit_car.col] != '_':
+                    return False
+        # Check if the red car is at the end of the board
         if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
             return True
         return False
+
+
+    # def red_unblocked(self):
+    #     """Checks if the red car is unblocked and if it can move to the end of the board/grid
+    #     also checks if the red car is at the end of the board/grid."""
+    #     exit_car = None 
+    #     for car in self.grid.cars:
+    #         if car.type == 'X':
+    #             exit_car = car 
+    #             break
+    #     # Checks if the red car is at the end of the board
+    #     if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
+    #         return True
+    #     return False
 
     def output_to_csv(self, filename):
         """Creates an output file which writes down all the cars that made moves and which moves they made."""

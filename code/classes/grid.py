@@ -40,7 +40,6 @@ class Grid():
     #                 return True
     #     return False
     
-    
     def can_move(self, car, movement):
         """Checks if the car doesn't make an illegal movement like moving at a space which is already occupied,
         or if the car is trying to move outside the grid."""
