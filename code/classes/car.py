@@ -1,3 +1,6 @@
+import random
+from code.visualisation.colors import COLORS2
+
 class Car():
     """Holds all elements of a Car."""
 
@@ -10,6 +13,7 @@ class Car():
         self.col = int(col) - 1
         self.row = int(row) - 1
         self.length = int(length)
+        self.color = COLORS2[self.type]
 
     def move(self, movement):
         """If orientation of the car is Horizontal move the car to a different column.

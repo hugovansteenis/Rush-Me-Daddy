@@ -2,6 +2,7 @@ from .car import Car
 from .grid import Grid
 from matplotlib.patches import Rectangle
 from matplotlib import animation
+from colorama import Style
 import matplotlib.pyplot as plt
 import random
 import csv
@@ -15,7 +16,8 @@ class Game():
         self.grid = 0 
         self.load_input(f"data/{game}")
         self.history = []
-        self.rectangles = []
+        self.rectangles = {}
+        self.counter = 0
 
     def load_input(self, filename):
         """Checks the grid size in the file name.
@@ -39,6 +41,7 @@ class Game():
         """Uses the move_car function made in the grid class to move.
         Also checks if the red car is at the destination it is meant to be to win.
         If so it prints the moves of all the cars into the output.csv file."""
+        self.counter += 1
         if not self.grid.move_car(car_type, movement):
             pass
         else:
@@ -46,9 +49,11 @@ class Game():
             self.history.append((car_type, movement))
             # Completes the program if the red car is in the right spot
             if self.red_unblocked():
-                print("You Win")
+                bold = '\033[1m'
+                print(f"{bold}You Win{Style.RESET_ALL}")
                 self.grid.print_grid()
-                print(len(self.history))
+                print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
+                print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
                 self.output_to_csv("output.csv")
                 return True
             return False
@@ -99,24 +104,18 @@ class Game():
             for move in self.history:
                 writer.writerow(move)
     
-    def animate_cars(self):
+    def update_cars(self):
         """Creates all the car-rectangles for the animation."""
         for car in self.grid.cars:
-            # Gets a random color for the car (https://www.adamsmith.haus/python/answers/how-to-generate-a-random-color-for-a-matplotlib-plot-in-python)
-            red = random.random()
-            green = random.random()
-            blue = random.random()
-            colour = (red, green, blue)
-
             # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
             if car.orientation == 'H' and car.type != 'X':
-                self.rectangles.append(Rectangle((car.col, car.row), car.length, 1, facecolor = colour, edgecolor = 'black', label = car.type))
+                self.rectangles[car] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
             elif car.type == 'X':
-                self.rectangles.append(Rectangle((car.col, car.row), 2, 1, facecolor = 'red', edgecolor = 'black', label = car.type))
+                self.rectangles[car] =(Rectangle((car.col, car.row), 2, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
             elif car.orientation == 'V' and car.length ==  3:
-                self.rectangles.append(Rectangle((car.col, car.row), 1, 3, facecolor = colour, edgecolor = 'black', label = car.type))
+                self.rectangles[car] =(Rectangle((car.col, car.row), 1, 3, facecolor = car.color, edgecolor = 'black', label = car.type))
             else:
-                self.rectangles.append(Rectangle((car.col, car.row), 1, car.length, facecolor = colour, edgecolor = 'black', label = car.type))
+                self.rectangles[car] =(Rectangle((car.col, car.row), 1, car.length, facecolor = car.color, edgecolor = 'black', label = car.type))
 
     def create_animationboard(self):
         """Creates the board and places all the rectangles."""
@@ -128,12 +127,15 @@ class Game():
         ax.set_xticklabels([])
 
         # Places all the rectangles on the board. (https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.add_patch.html)
-        for rec in self.rectangles:
+        for rec in self.rectangles.values():
             ax.add_patch(rec)
 
         # Adds a legend to the graph and makes the graph into a square.
-        ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
-          fancybox=True, shadow=True, ncol=5)
+        # ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
+        #   fancybox=True, shadow=True, ncol=5)
         ax.set_aspect('equal', adjustable='box')
 
         return plt
+
+
+

@@ -21,7 +21,10 @@ if __name__ == "__main__":
             solve_rushhour(test_game)
             exit(2)
         elif argv[2] == "visual":
-            test_game.animate_cars()
+            test_game.update_cars()
+            plt = test_game.create_animationboard()
+            solve_rushhour(test_game)
+            test_game.update_cars()
             plt = test_game.create_animationboard()
             plt.show()
             exit(3)
