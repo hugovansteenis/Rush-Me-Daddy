@@ -16,9 +16,11 @@ if __name__ == "__main__":
 
     # Check if the user wants to work with an algorithm or use it manually.
     if len(argv) > 2:
-        if argv[2] == "algorithm":
+        if argv[2] == "random":
+            algorithm_name = "Random"
             test_game.grid.print_grid()
             solve_rushhour(test_game)
+            test_game.handle_output(algorithm_name)
             exit(2)
         elif argv[2] == "visual":
             test_game.update_cars()
