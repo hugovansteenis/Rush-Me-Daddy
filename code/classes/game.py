@@ -79,7 +79,7 @@ class Game():
                 if self.grid.board[i][exit_car.col] != '_':
                     return False
         # Check if the red car is at the end of the board
-        if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
+        if self.grid.board[exit_car.row][self.grid.width - 2] == 'X':
             return True
         return False
 
@@ -193,7 +193,8 @@ class Game():
         plt.savefig('graph.png')
 
         
-
+    def __hash__(self) -> int:
+        return hash(str(self.grid))
 
         
 
