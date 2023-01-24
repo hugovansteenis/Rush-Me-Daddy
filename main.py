@@ -1,5 +1,5 @@
 from code.classes import game
-from code.algorithms.random import solve_rushhour
+from code.algorithms.random import random_algorithm
 from code.algorithms.depth_first import depth_first
                
 if __name__ == "__main__":
@@ -20,23 +20,35 @@ if __name__ == "__main__":
         if argv[2] == "random":
             algorithm_name = "Random"
             test_game.grid.print_grid()
-            solve_rushhour(test_game)
-            test_game.handle_output(algorithm_name)
+            if len(argv) > 3:
+                if argv[3] == "visual":
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    random_algorithm(test_game)
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    test_game.handle_output(algorithm_name)
+                    plt.show()
+            else:
+                random_algorithm(test_game)
+                test_game.handle_output(algorithm_name)
             exit(2)
         elif argv[2] == "depth":
             algorithm_name = "Depth First"
             test_game.grid.print_grid()
-            depth_first(test_game)
-            test_game.handle_output(algorithm_name)
+            if len(argv) > 3:
+                if argv[3] == "visual":
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    depth_first(test_game)
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    test_game.handle_output(algorithm_name)
+                    plt.show()
+            else:
+                depth_first(test_game)
+                test_game.handle_output(algorithm_name)
             exit(2)    
-        elif argv[2] == "visual":
-            test_game.update_cars()
-            plt = test_game.create_animationboard()
-            solve_rushhour(test_game)
-            test_game.update_cars()
-            plt = test_game.create_animationboard()
-            plt.show()
-            exit(3)
         else:
             print("Wrong algorithm usage")
     else:

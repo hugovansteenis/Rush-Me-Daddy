@@ -2,7 +2,7 @@ import random
 from code.classes.game import Game
 from code.classes.grid import Grid
 
-def solve_rushhour(game):
+def random_algorithm(game):
     """Solves rushhour by random an algoritm that selects random cars and makes random moves"""
     # Makes a list with steps from -5 to 5
     moves = list(range(-5, 6))
