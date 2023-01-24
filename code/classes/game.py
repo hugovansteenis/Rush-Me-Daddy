@@ -46,9 +46,7 @@ class Game():
         Also checks if the red car is at the destination it is meant to be to win.
         If so it prints the moves of all the cars into the output.csv file."""
         self.counter += 1
-        if not self.grid.move_car(car_type, movement):
-            pass
-        else:
+        if self.grid.move_car(car_type, movement):
             # Stores the move in history for output
             self.history.append((car_type, movement))
             # Completes the program if the red car is in the right spot
