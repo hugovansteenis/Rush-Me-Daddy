@@ -6,6 +6,7 @@ from colorama import Style
 from collections import defaultdict
 from code.visualisation.colors import COLORS2
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import random
 import os
@@ -178,7 +179,8 @@ class Game():
         ax.bar_label(rect)
         ax.set_xlabel("Cars")
         ax.set_ylabel("Amount of moves")
-        ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(self.history)}", fontsize=14, fontweight='bold') 
+        results = pd.read_csv('output.csv')
+        ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
         tl = plt.gca().get_xticklabels() 
