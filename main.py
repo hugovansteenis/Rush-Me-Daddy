@@ -1,5 +1,6 @@
 from code.classes import game
 from code.algorithms.random import solve_rushhour
+from code.algorithms.depth_first import depth_first
                
 if __name__ == "__main__":
 
@@ -22,6 +23,12 @@ if __name__ == "__main__":
             solve_rushhour(test_game)
             test_game.handle_output(algorithm_name)
             exit(2)
+        elif argv[2] == "depth":
+            algorithm_name = "Depth First"
+            test_game.grid.print_grid()
+            depth_first(test_game)
+            test_game.handle_output(algorithm_name)
+            exit(2)    
         elif argv[2] == "visual":
             test_game.update_cars()
             plt = test_game.create_animationboard()
