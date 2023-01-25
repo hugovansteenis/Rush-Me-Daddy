@@ -1,6 +1,7 @@
 from code.classes import game
 from code.algorithms.random import random_algorithm
 from code.algorithms.depth_first import depth_first
+from code.algorithms.breadth_first import breadth_first
                
 if __name__ == "__main__":
 
