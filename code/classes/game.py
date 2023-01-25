@@ -28,7 +28,7 @@ class Game():
         """Checks the grid size in the file name.
         Also reads the input data given and creates all the car objects."""
         if self.game[8].isnumeric():
-            number = self.game[8]
+            number = self.game[8]               # MAKE GLOBAL VARIABLE
             if self.game[9].isnumeric():
                 number += self.game[9]
             self.grid = Grid(number)

@@ -4,15 +4,14 @@ import copy
 from code.classes.game import Game
 from code.classes.grid import Grid
 
-
-def depth_first(game):
+def breadth_first(game):
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
 
     while len(states) > 0:
         # Create new game board state
-        game = states.pop()
+        game = states.pop(0)
 
         # If board is solved, return solution.csv
         if game.red_unblocked():
