@@ -48,7 +48,23 @@ if __name__ == "__main__":
             else:
                 depth_first(test_game)
                 test_game.handle_output(algorithm_name)
-            exit(2)    
+            exit(2)
+        elif argv[2] == "breadth":
+            algorithm_name = "Breadth First"
+            test_game.grid.print_grid()
+            if len(argv) > 3:
+                if argv[3] == "visual":
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    breadth_first(test_game)
+                    test_game.update_cars()
+                    plt = test_game.create_animationboard()
+                    test_game.handle_output(algorithm_name)
+                    plt.show()
+            else:
+                breadth_first(test_game)
+                test_game.handle_output(algorithm_name)
+            exit(2)
         else:
             print("Wrong algorithm usage")
     else:
