@@ -1,14 +1,11 @@
 from .car import Car
 from .grid import Grid
 from matplotlib.patches import Rectangle
-from matplotlib import animation
 from colorama import Style
 from collections import defaultdict
 from code.visualisation.colors import COLORS2
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import random
 import os
 import csv
 
@@ -21,8 +18,15 @@ class Game():
         self.grid = 0 
         self.load_input(f"data/{game}")
         self.history = []
-        self.rectangles = {}
         self.counter = 0
+
+        # Animation variables
+        self.rectangles = {}
+        self.x_cords = {}
+        self.y_cords = {}
+        self.x_move_list = []
+        self.y_move_list = []
+        self.cars_moved_list = []
 
     def load_input(self, filename):
         """Checks the grid size in the file name.
@@ -106,39 +110,6 @@ class Game():
             # Retrieves all the moves in history and writes these into the outputfile
             for move in self.history:
                 writer.writerow(move)
-    
-    def update_cars(self):
-        """Creates all the car-rectangles for the animation."""
-        for car in self.grid.cars:
-            # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
-            if car.orientation == 'H' and car.type != 'X':
-                self.rectangles[car] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
-            elif car.type == 'X':
-                self.rectangles[car] =(Rectangle((car.col, car.row), 2, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
-            elif car.orientation == 'V' and car.length ==  3:
-                self.rectangles[car] =(Rectangle((car.col, car.row), 1, 3, facecolor = car.color, edgecolor = 'black', label = car.type))
-            else:
-                self.rectangles[car] =(Rectangle((car.col, car.row), 1, car.length, facecolor = car.color, edgecolor = 'black', label = car.type))
-
-    def create_animationboard(self):
-        """Creates the board and places all the rectangles."""
-        # Creates a subplot (https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
-        fig, ax = plt.subplots()
-        ax.set_xlim(0, self.grid.width)
-        ax.set_ylim(self.grid.width, 0)
-        ax.set_yticklabels([])
-        ax.set_xticklabels([])
-
-        # Places all the rectangles on the board. (https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.add_patch.html)
-        for rec in self.rectangles.values():
-            ax.add_patch(rec)
-
-        # Adds a legend to the graph and makes the graph into a square.
-        # ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
-        #   fancybox=True, shadow=True, ncol=5)
-        ax.set_aspect('equal', adjustable='box')
-
-        return plt
 
     def handle_output(self, algorithm_name):
         """Makes a graph based on the scanned outputfile."""  
@@ -193,10 +164,107 @@ class Game():
 
         # Saves the graph
         plt.savefig('graph.png')
-
         
     def __hash__(self) -> int:
         return hash(str(self.grid))
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Animation functions based on unutbu example (https://stackoverflow.com/questions/31921313/matplotlib-animation-moving-square)
+
+    def update_cars(self):
+        """Creates all the car-rectangles for the animation."""
+        for car in self.grid.cars:
+            # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
+            if car.orientation == 'H' and car.type != 'X':
+                self.rectangles[car.type] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
+            elif car.type == 'X':
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 2, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
+            elif car.orientation == 'V' and car.length ==  3:
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, 3, facecolor = car.color, edgecolor = 'black', label = car.type))
+            else:
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, car.length, facecolor = car.color, edgecolor = 'black', label = car.type))
+            
+        return self.rectangles
+
+    def create_animationboard(self):
+        """Creates the board and places all the rectangles."""
+        # Creates a subplot (https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
+        fig, ax = plt.subplots()
+        ax.set_xlim(0, self.grid.width)
+        ax.set_ylim(self.grid.width, 0)
+        ax.set_yticklabels([])
+        ax.set_xticklabels([])
+
+        # Places all the rectangles on the board. (https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.add_patch.html)
+        for rec in self.rectangles.values():
+            ax.add_patch(rec)
+
+        # Adds a legend to the graph and makes the graph into a square.
+        # ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
+        #   fancybox=True, shadow=True, ncol=5)
+        ax.set_aspect('equal', adjustable='box')
+
+        return plt, fig, ax
+
+    def x_coordinates(self):
+        """(inset description)""" 
+        for car in self.grid.cars:
+            self.x_cords[car.type] = self.rectangles[car.type].get_x()
+        return self.x_cords
+
+    def y_coordinates(self):
+        """(inset description)""" 
+        for car in self.grid.cars:
+            self.y_cords[car.type] = self.rectangles[car.type].get_y()
+        return self.y_cords
+
+    def x_moves(self):
+        """(inset description)""" 
+        with open('output.csv') as output:
+            next(output)
+            read_output = csv.reader(output)
+            for row in read_output:
+                for car in self.grid.cars:
+                    if row[0] == car.type:
+                        if car.orientation == 'H':
+                            self.x_cords[car.type] += int(row[1])
+                            self.x_move_list.append(self.x_cords[car.type])
+                        else:
+                            self.x_move_list.append(self.x_cords[car.type])
+            return self.x_move_list
+
+    def y_moves(self):
+        """(inset description)"""
+        with open('output.csv') as output:
+            next(output)
+            read_output = csv.reader(output)
+            for row in read_output:
+                for car in self.grid.cars:
+                    if row[0] == car.type:
+                        if car.orientation == 'V':
+                            self.y_cords[car.type] += int(row[1])
+                            self.y_move_list.append(self.y_cords[car.type])
+                        else:
+                            self.y_move_list.append(self.y_cords[car.type])
+            return self.y_move_list
+
+    def cars_moved(self):
+        """(inset description)"""
+        with open('output.csv') as output:
+            next(output)
+            read_output = csv.reader(output)
+            for row in read_output:
+                self.cars_moved_list.append(row[0])
+        return self.cars_moved_list
+# -----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+        
+
 
         
 
