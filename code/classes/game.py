@@ -192,7 +192,7 @@ class Game():
         # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
-        plt.savefig('graph.jpg')
+        plt.savefig('graph.png')
 
         
     def __hash__(self) -> int:
