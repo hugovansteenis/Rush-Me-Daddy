@@ -36,4 +36,9 @@ def breadth_first(game):
                         if _str not in archive:
                             archive.add(_str)
                             states.append(newest_game)
+        apply_heuristics(list(archive))
+
     return False
+
+def apply_heuristics(beam):
+    return beam.sort()
