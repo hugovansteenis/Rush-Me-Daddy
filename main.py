@@ -2,6 +2,7 @@ from code.classes import game
 from code.algorithms.random import random_algorithm
 from code.algorithms.depth_first import depth_first
 from code.algorithms.breadth_first import breadth_first
+from code.algorithms.greedy import greedy_algorithm
 from code.visualisation.animate import animate
                
 if __name__ == "__main__":
@@ -41,6 +42,14 @@ if __name__ == "__main__":
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
             exit(4)
+        elif argv[2] == "greedy":
+            algorithm_name = "Greedy"
+            test_game.grid.print_grid()
+            greedy_algorithm(test_game)
+            test_game.handle_output(algorithm_name)
+            if len(argv) > 3 and argv[3] == "visual":
+                animate(game_name)
+            exit(5)
         else:
             print("Wrong algorithm usage")
     else:
