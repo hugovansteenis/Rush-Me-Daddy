@@ -23,6 +23,12 @@ def heuristic_value2(game):
             blocked_cars += 1
     return blocked_cars
 
+def heuristic_value6(game):
+    blocked_cars = []
+    for car in game.grid.cars:
+        if game.is_blocking(car):
+            blocked_cars.append(car)
+    return blocked_cars
 
 def heuristic_value3(game, red_car):
     red_car = game.grid.cars[0]  # Assume the red car is the first car in the list
