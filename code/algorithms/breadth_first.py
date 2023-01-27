@@ -23,6 +23,8 @@ def breadth_first(game:Game):
             exclude_zero = {0}
             moves = list(num for num in moves if num not in exclude_zero)
             
+            temp_states = []
+
             # Iterate over the possible moves per car
             for car in game.grid.cars:
                 for move in moves:
@@ -35,8 +37,9 @@ def breadth_first(game:Game):
                         _str = str(newest_game.grid)
                         if _str not in archive:
                             archive.add(_str)
-                            states.append(newest_game)
+                            temp_states.append(newest_game)
             
             # Keep only the w most promising states
-            states = sorted(states, key=lambda x: heuristic_value2(x))[:w]
+            temp_states = sorted(temp_states, key=lambda x: heuristic_value2(x))[:w]
+            states.extend(temp_states)
 
