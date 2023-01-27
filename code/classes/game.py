@@ -8,6 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import csv
+from code.algorithms import heuristic
 
 class Game():
     """Holds all elements of a Grid."""
@@ -102,6 +103,18 @@ class Game():
     #         return True
     #     return False
 
+    def is_blocking(self, car):
+        """Check if car is blocking the red car (='X')"""
+        red_car = heuristic.find_red_car(self)
+        if car.orientation == 'V':
+            if car.row == red_car.row and red_car.col < car.col < red_car.col + red_car.length:
+                return True
+        else:
+            if car.orientation == 'H':
+                if car.col == red_car.col and red_car.row < car.row < red_car.row + red_car.length:
+                    return True
+        return False
+
     def output_to_csv(self, filename):
         """Creates an output file which writes down all the cars that made moves and which moves they made."""
         with open(filename, "w", newline='') as file:
@@ -154,13 +167,13 @@ class Game():
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
-        tl = plt.gca().get_xticklabels()
-        maxsize = max([t.get_window_extent().width for t in tl])
-        m = 0.5
-        s = maxsize/plt.gcf().dpi*200*m
-        margin = m/plt.gcf().get_size_inches()[0]
-        plt.gcf().subplots_adjust(left=margin, right=1.-margin)
-        plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
+        # tl = plt.gca().get_xticklabels()
+        # maxsize = max([t.get_window_extent().width for t in tl])
+        # m = 0.5
+        # s = maxsize/plt.gcf().dpi*200*m
+        # margin = m/plt.gcf().get_size_inches()[0]
+        # plt.gcf().subplots_adjust(left=margin, right=1.-margin)
+        # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
         plt.savefig('graph.png')

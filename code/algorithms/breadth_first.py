@@ -2,12 +2,13 @@
 
 import copy
 from code.classes.game import Game
-from code.classes.grid import Grid
+from code.algorithms.heuristic import heuristic_value2
 
-def breadth_first(game):
+def breadth_first(game:Game):
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
+    w = 3
 
     while len(states) > 0:
         # Create new game board state
@@ -16,9 +17,8 @@ def breadth_first(game):
         # If board is solved, return solution.csv
         if game.red_unblocked():
             return True
-
         else:
-            # Build children 
+            # Build children for current node/state
             moves = list(range(-5, 6))
             exclude_zero = {0}
             moves = list(num for num in moves if num not in exclude_zero)
@@ -36,9 +36,7 @@ def breadth_first(game):
                         if _str not in archive:
                             archive.add(_str)
                             states.append(newest_game)
-        apply_heuristics(list(archive))
+            
+            # Keep only the w most promising states
+            states = sorted(states, key=lambda x: heuristic_value2(x))[:w]
 
-    return False
-
-def apply_heuristics(beam):
-    return beam.sort()
