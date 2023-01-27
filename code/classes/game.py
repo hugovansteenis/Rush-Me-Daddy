@@ -11,7 +11,7 @@ import csv
 from code.algorithms import heuristic
 
 class Game():
-    """Holds all elements of a Grid."""
+    """Holds all elements of the Game object."""
     
     def __init__(self, game):
         """(insert description)"""
@@ -123,6 +123,9 @@ class Game():
             # Retrieves all the moves in history and writes these into the outputfile
             for move in self.history:
                 writer.writerow(move)
+    
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Graph functions.
 
     def handle_output(self, algorithm_name):
         """Makes a graph based on the scanned outputfile."""  
@@ -189,13 +192,13 @@ class Game():
         for car in self.grid.cars:
             # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
             if car.orientation == 'H' and car.type != 'X':
-                self.rectangles[car.type] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
+                self.rectangles[car.type] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black'))
             elif car.type == 'X':
-                self.rectangles[car.type] =(Rectangle((car.col, car.row), 2, 1, facecolor = car.color, edgecolor = 'black', label = car.type))
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 2, 1, facecolor = car.color, edgecolor = 'black'))
             elif car.orientation == 'V' and car.length ==  3:
-                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, 3, facecolor = car.color, edgecolor = 'black', label = car.type))
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, 3, facecolor = car.color, edgecolor = 'black'))
             else:
-                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, car.length, facecolor = car.color, edgecolor = 'black', label = car.type))
+                self.rectangles[car.type] =(Rectangle((car.col, car.row), 1, car.length, facecolor = car.color, edgecolor = 'black'))
             
         return self.rectangles
 
@@ -269,7 +272,7 @@ class Game():
             for row in read_output:
                 self.cars_moved_list.append(row[0])
         return self.cars_moved_list
-# -----------------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------------
 
 
 
