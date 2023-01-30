@@ -32,9 +32,6 @@ class Game():
         self.y_move_list = []
         self.cars_moved_list = []
 
-        # Solution variables
-        # self.best_solution = None
-        # self.best_number_moves = float('inf')
 
     def load_input(self, filename):
         """Checks the grid size in the file name.
@@ -69,17 +66,6 @@ class Game():
                 self.grid.print_grid()
                 print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
                 print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
-
-                # # Save current number of moves and previous number
-                # new_number_moves = len(self.history)
-                # old_number_moves = self.best_number_moves
-
-                # # If the current number of moves is lower than the previous solution, save the history
-                # if new_number_moves < old_number_moves:
-                #     self.best_solution = self.history
-                #     print(f"length best solution: {len(self.best_solution)}")
-                #     self.best_number_moves = new_number_moves
-                #     self.output_to_csv("output.csv")
                 return True
             return False
 
@@ -140,7 +126,7 @@ class Game():
             runnnnntime = stop - start
             experiment_list.append(n_runs, runnnnntime)
 
-        with open('experiment.csv', "w", newline='') as file:
+        with open('results/experiment.csv', "w", newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["iteration", "time"])
             for iteration in experiment_list:
@@ -151,7 +137,7 @@ class Game():
 
     def handle_output(self, algorithm_name):
         """Makes a graph based on the scanned outputfile."""  
-        reader = csv.reader(open('output.csv'))
+        reader = csv.reader(open('results/output.csv'))
         counter = defaultdict(int)
 
         # Goes through the entire file and counts all car_types.
@@ -188,7 +174,7 @@ class Game():
         ax.bar_label(rect)
         ax.set_xlabel("Cars")
         ax.set_ylabel("Amount of moves")
-        results = pd.read_csv('output.csv')
+        results = pd.read_csv('results/output.csv')
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
@@ -201,7 +187,7 @@ class Game():
         # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
-        plt.savefig('graph.png')
+        plt.savefig('results/graph.png')
         
     def __hash__(self) -> int:
         return hash(str(self.grid))
@@ -238,8 +224,6 @@ class Game():
             ax.add_patch(rec)
 
         # Adds a legend to the graph and makes the graph into a square.
-        # ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0),
-        #   fancybox=True, shadow=True, ncol=5)
         ax.set_aspect('equal', adjustable='box')
 
         return plt, fig, ax
@@ -258,7 +242,7 @@ class Game():
 
     def x_moves(self):
         """(inset description)""" 
-        with open('output.csv') as output:
+        with open('results/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:
@@ -273,7 +257,7 @@ class Game():
 
     def y_moves(self):
         """(inset description)"""
-        with open('output.csv') as output:
+        with open('results/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:
@@ -288,7 +272,7 @@ class Game():
 
     def cars_moved(self):
         """(inset description)"""
-        with open('output.csv') as output:
+        with open('results/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:

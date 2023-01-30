@@ -17,7 +17,7 @@ def beam_search(game:Game):
         # If board is solved, return solution.csv
         if game.red_unblocked():
             print(f"length game history: {len(game.history)}")
-            game.output_to_csv("output.csv")
+            game.output_to_csv("results/output.csv")
             return True
         else:
             # Build children for current node/state

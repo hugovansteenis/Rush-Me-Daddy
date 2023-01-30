@@ -22,37 +22,4 @@ def greedy_algorithm(game):
         random_car = random.choice(game.grid.cars)
         cartype = random_car.type
         game.move_car(cartype, random_move)
-    # """Solves rushhour by prioritizing moves that will clear the path for the red car"""
-    # for car in game.grid.cars:
-    #     if car.type == 'X':
-    #         red_car = car
-
-    # while not game.red_unblocked():
-    #     # Check if red car can advance position if so move the red car.
-    #     if game.grid.can_move(red_car, 1):
-    #         game.move_car(red_car, 1)
-    #         continue
-    #     # Prioritize moving cars with horizontal orientation to the left
-    #     for car in game.grid.cars:
-    #         if car.orientation == 'H':
-    #             if game.grid.can_move(car, -1):
-    #                 game.move_car(car.type, -1)
-    #                 break
-    #     # Move cars with a vertical orientation up or down
-    #     for car in game.grid.cars:
-    #         if car.orientation == 'V':
-    #             if game.grid.can_move(car, -1):
-    #                 game.move_car(car.type, -1)
-    #                 break
-    #             elif game.grid.can_move(car, 1):
-    #                 game.move_car(car.type, 1)
-    #                 break
-        
-    #     for car in game.grid.cars:
-    #         if car.orientation == 'H':
-    #             if game.grid.can_move(car, -1):
-    #                 game.move_car(car.type, -1)
-    #                 break
-    #             else:
-    #                 game.move_car(car.type, 1)
-    #                 break
+    game.output_to_csv("results/output.csv")

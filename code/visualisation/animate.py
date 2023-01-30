@@ -42,4 +42,4 @@ def animate(file_name):
     animated_board = FuncAnimation(fig, animate, frames = len(x_move_list), interval = 1000,
                                     init_func = init, repeat = True, repeat_delay = 5000)
     writergif = animation.PillowWriter(fps = 1)
-    animated_board.save('animation.gif', writer = writergif)
+    animated_board.save('results/animation.gif', writer = writergif)
