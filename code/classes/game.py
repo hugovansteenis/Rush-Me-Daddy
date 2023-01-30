@@ -30,8 +30,8 @@ class Game():
         self.cars_moved_list = []
 
         # Solution variables
-        self.best_solution = None
-        self.best_number_moves = float('inf')
+        # self.best_solution = None
+        # self.best_number_moves = float('inf')
 
     def load_input(self, filename):
         """Checks the grid size in the file name.
@@ -67,15 +67,16 @@ class Game():
                 print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
                 print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
 
-                # Save current number of moves and previous number
-                new_number_moves = len(self.history)
-                old_number_moves = self.best_number_moves
+                # # Save current number of moves and previous number
+                # new_number_moves = len(self.history)
+                # old_number_moves = self.best_number_moves
 
-                # If the current number of moves is lower than the previous solution, save the history
-                if new_number_moves < old_number_moves:
-                    self.best_solution = self.history
-                    self.best_number_moves = new_number_moves
-                    self.output_to_csv("output.csv")
+                # # If the current number of moves is lower than the previous solution, save the history
+                # if new_number_moves < old_number_moves:
+                #     self.best_solution = self.history
+                #     print(f"length best solution: {len(self.best_solution)}")
+                #     self.best_number_moves = new_number_moves
+                #     self.output_to_csv("output.csv")
                 return True
             return False
 
