@@ -2,7 +2,8 @@ from code.classes.game import Game
 from matplotlib.patches import Rectangle
 from matplotlib.animation import FuncAnimation
 from matplotlib import animation
-import matplotlib.pyplot as plt
+from datetime import datetime
+import matplotlib.pyplot as plt 
 
 
 def animate(file_name):
@@ -41,5 +42,7 @@ def animate(file_name):
 
     animated_board = FuncAnimation(fig, animate, frames = len(x_move_list), interval = 1000,
                                     init_func = init, repeat = True, repeat_delay = 5000)
-    writergif = animation.PillowWriter(fps = 1)
-    animated_board.save('results/animation.gif', writer = writergif)
+    writergif = animation.PillowWriter(fps = 4)
+    time_string = datetime.now()
+    time_string = time_string.strftime("%H%M%S")
+    animated_board.save(f"results/animation_{time_string}.gif", writer = writergif)

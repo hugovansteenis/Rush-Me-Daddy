@@ -4,6 +4,7 @@ from code.algorithms.depth_first import depth_first
 from code.algorithms.breadth_first import breadth_first
 from code.algorithms.greedy import greedy_algorithm
 from code.visualisation.animate import animate
+import time
 from experiments import random_experiment
 
 if __name__ == "__main__":
@@ -28,7 +29,10 @@ if __name__ == "__main__":
         elif argv[2] == "depth":
             algorithm_name = "Depth First"
             test_game.grid.print_grid()
+            start = time.time()
             depth_first(test_game)
+            end = time.time()
+            print(end - start)
             test_game.handle_output(algorithm_name)
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
