@@ -116,7 +116,7 @@ class Game():
 
     def handle_output(self, algorithm_name):
         """Makes a graph based on the scanned outputfile."""  
-        reader = csv.reader(open('results/output.csv'))
+        reader = csv.reader(open(f'results/{algorithm_name}/output.csv'))
         counter = defaultdict(int)
 
         # Goes through the entire file and counts all car_types.
@@ -153,7 +153,7 @@ class Game():
         ax.bar_label(rect)
         ax.set_xlabel("Cars")
         ax.set_ylabel("Amount of moves")
-        results = pd.read_csv('results/output.csv')
+        results = pd.read_csv(f'results/{algorithm_name}/output.csv')
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
@@ -168,7 +168,7 @@ class Game():
         # Saves the graph
         time_string = datetime.now()
         time_string = time_string.strftime("%H%M%S")
-        plt.savefig(f'results/graph_{time_string}.png')
+        plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
         
     def __hash__(self) -> int:
         return hash(str(self.grid))
@@ -223,7 +223,7 @@ class Game():
 
     def x_moves(self):
         """(inset description)""" 
-        with open('results/output.csv') as output:
+        with open(f'results/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:

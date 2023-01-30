@@ -15,4 +15,4 @@ def random_algorithm(game):
         cartype = random_car.type
         game.move_car(cartype, random_move)
     print(len(game.history))
-    game.output_to_csv("results/output.csv")
+    game.output_to_csv("results/random/output.csv")
