@@ -16,7 +16,7 @@ def depth_first(game):
 
         # If board is solved, return solution.csv
         if game.red_unblocked():
-            print(f"length game history: {len(game.history)}")
+            # print(f"length game history: {len(game.history)}")
             game.output_to_csv("results/depth/output.csv")
             return True
 

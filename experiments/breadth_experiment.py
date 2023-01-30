@@ -47,7 +47,7 @@ start = time.time()
 breadth_first(game3)
 end = time.time()
 duration = end - start
-shutil.copy("results/output.csv", "results/breadth/output_breadth_board6.csv")
+shutil.copy("results/output.csv", "results/breadth/output_breadth_board7.csv")
 game3.handle_output("breadth")
 animate('Rushhour12x12_7.csv', 'breadth')
 time_list.append("12x12_7", duration)

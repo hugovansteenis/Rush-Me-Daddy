@@ -59,11 +59,11 @@ class Game():
             self.history.append((car_type, movement))
             # Completes the program if the red car is in the right spot
             if self.red_unblocked():
-                bold = '\033[1m'
-                print(f"{bold}You Win{Style.RESET_ALL}")
-                self.grid.print_grid()
-                print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
-                print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
+                # bold = '\033[1m'
+                # print(f"{bold}You Win{Style.RESET_ALL}")
+                # self.grid.print_grid()
+                # print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
+                # print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
                 return True
             return False
 
