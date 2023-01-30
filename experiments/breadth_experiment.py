@@ -1,3 +1,6 @@
+import sys, os
+sys.path = [os.getcwd()] + sys.path
+
 from code.classes import game
 from code.algorithms.breadth_first import breadth_first
 from code.visualisation.animate import animate
