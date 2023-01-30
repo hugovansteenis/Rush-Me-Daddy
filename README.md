@@ -1,4 +1,4 @@
 # Rush-Me-Daddy
-Programmeertheorie groepje met Daan, Hugo &amp; Sarah (Rush Hour)
+Algoritmen en Heuristieken groepje met Daan, Hugo &amp; Sarah
 
-
+# Rush Hour
