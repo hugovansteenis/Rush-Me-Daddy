@@ -8,9 +8,6 @@ def breadth_first(game:Game):
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
-    w = 3
-    best_solution = None
-    number_moves = len(game.history)
 
     while len(states) > 0:
         # Create new game board state
