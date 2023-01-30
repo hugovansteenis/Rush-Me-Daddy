@@ -6,11 +6,8 @@ from collections import defaultdict
 from code.visualisation.colors import COLORS2
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 import csv
 from code.algorithms import heuristic
-import subprocess
-import time
 
 
 class Game():
@@ -112,25 +109,6 @@ class Game():
             # Retrieves all the moves in history and writes these into the outputfile
             for move in self.history:
                 writer.writerow(move)
-    
-    def timer(duration, run_time, algorithm):
-        start = time.time()
-        n_runs = 0
-        experiment_list = []
-
-        while time.time() - start < duration:
-            print(f"run: {n_runs}")
-            subprocess.call(["timeout", run_time, "python3", algorithm])
-            n_runs += 1
-            stop = time.time()
-            runnnnntime = stop - start
-            experiment_list.append(n_runs, runnnnntime)
-
-        with open('results/experiment.csv', "w", newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["iteration", "time"])
-            for iteration in experiment_list:
-                writer.writerow(iteration)
     
     # -----------------------------------------------------------------------------------------------------------------------------
     # Graph functions.
