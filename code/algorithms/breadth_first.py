@@ -8,9 +8,6 @@ def breadth_first(game:Game):
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
-    w = 3
-    best_solution = None
-    number_moves = len(game.history)
 
     while len(states) > 0:
         # Create new game board state
@@ -18,6 +15,8 @@ def breadth_first(game:Game):
 
         # If board is solved, return solution.csv
         if game.red_unblocked():
+            print(f"length game history: {len(game.history)}")
+            game.output_to_csv("output.csv")
             return True
         else:
             # Build children for current node/state
