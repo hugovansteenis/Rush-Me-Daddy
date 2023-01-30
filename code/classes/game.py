@@ -89,20 +89,6 @@ class Game():
             return True
         return False
 
-
-    # def red_unblocked(self):
-    #     """Checks if the red car is unblocked and if it can move to the end of the board/grid
-    #     also checks if the red car is at the end of the board/grid."""
-    #     exit_car = None 
-    #     for car in self.grid.cars:
-    #         if car.type == 'X':
-    #             exit_car = car 
-    #             break
-    #     # Checks if the red car is at the end of the board
-    #     if self.grid.board[exit_car.row][self.grid.width - 1] == 'X':
-    #         return True
-    #     return False
-
     def is_blocking(self, car):
         """Check if car is blocking the red car (='X')"""
         red_car = heuristic.find_red_car(self)
