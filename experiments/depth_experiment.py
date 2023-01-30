@@ -25,7 +25,7 @@ game1.handle_output("Depth First")
 animate("Rushhour6x6_3.csv")
 time_list.append(("6x6_3", duration))
 
-# #-------------------------------------
+#-------------------------------------
 # Board 6
 
 game2 = game.Game('Rushhour9x9_6.csv')
@@ -38,7 +38,7 @@ game2.handle_output("Depth First")
 animate("Rushhour9x9_6.csv")
 time_list.append("9x9_6", duration)
 
-# #--------------------------------------
+#--------------------------------------
 # Board 9
 
 game3 = game.Game('Rushhour12x12_7.csv')

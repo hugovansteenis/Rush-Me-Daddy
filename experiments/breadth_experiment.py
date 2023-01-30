@@ -24,33 +24,33 @@ game1.handle_output("Breadth First")
 animate("Rushhour6x6_3.csv")
 time_list.append(("6x6_3", duration))
 
-# #-------------------------------------
+#-------------------------------------
 # Board 6
 
-# print("Board 6 is currently running")
-# game2 = game.Game('Rushhour9x9_6.csv')
-# start = time.time()
-# breadth_first(game2)
-# end = time.time()
-# duration = end - start
-# shutil.copy("results/output.csv", "results/output_breadth_board6.csv")
-# game2.handle_output("Breadth First")
-# animate("Rushhour9x9_6.csv")
-# time_list.append("9x9_6", duration)
+print("Board 6 is currently running")
+game2 = game.Game('Rushhour9x9_6.csv')
+start = time.time()
+breadth_first(game2)
+end = time.time()
+duration = end - start
+shutil.copy("results/output.csv", "results/output_breadth_board6.csv")
+game2.handle_output("Breadth First")
+animate("Rushhour9x9_6.csv")
+time_list.append("9x9_6", duration)
 
-# # #--------------------------------------
-# # Board 9
+#--------------------------------------
+# Board 9
 
-# print("Board 7 is currently running")
-# game3 = game.Game('Rushhour12x12_7.csv')
-# start = time.time()
-# breadth_first(game3)
-# end = time.time()
-# duration = end - start
-# shutil.copy("results/output.csv", "results/output_breadth_board6.csv")
-# game3.handle_output("Breadth First")
-# animate('Rushhour12x12_7.csv')
-# time_list.append("12x12_7", duration)
+print("Board 7 is currently running")
+game3 = game.Game('Rushhour12x12_7.csv')
+start = time.time()
+breadth_first(game3)
+end = time.time()
+duration = end - start
+shutil.copy("results/output.csv", "results/output_breadth_board6.csv")
+game3.handle_output("Breadth First")
+animate('Rushhour12x12_7.csv')
+time_list.append("12x12_7", duration)
 
 #--------------------------------------
 # Output Data
