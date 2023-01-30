@@ -6,16 +6,25 @@ from code.algorithms.greedy import greedy_algorithm
 from code.visualisation.animate import animate
 import subprocess
 import time
+import csv
 
 
 def timer(duration, run_time, algorithm):
     start = time.time()
     n_runs = 0
+    experiment_list = []
 
     while time.time() - start < duration:
         print(f"run: {n_runs}")
         subprocess.call(["timeout", run_time, "python3", algorithm])
         n_runs += 1
+        experiment_list.append(n_runs, start)
+
+    with open('experiment.csv', "w", newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["iteration", "time"])
+        for iteration in experiment_list:
+            writer.writerow(iteration)
         
 
 if __name__ == "__main__":
