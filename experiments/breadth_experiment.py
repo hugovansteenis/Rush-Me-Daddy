@@ -55,7 +55,7 @@ time_list.append("12x12_7", duration)
 #--------------------------------------
 # Output Data
 
-with open("results/depth_first_results.csv", "w", newline='') as file:
+with open("results/breadth_first_results.csv", "w", newline='') as file:
     writer = csv.writer(file)
     writer.writerow(["board", "time"])
     for move in time_list:
