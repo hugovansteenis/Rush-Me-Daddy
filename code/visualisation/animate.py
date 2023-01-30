@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt 
 
 
-def animate(file_name):
+def animate(file_name, algorithm_name):
 
     # ------------------------------------------------------
     # Retrieving all the variables for the animation.
@@ -15,9 +15,9 @@ def animate(file_name):
     rectangles = animation_test.update_cars()
     x_cords = animation_test.x_coordinates()
     y_cords = animation_test.y_coordinates()
-    x_move_list = animation_test.x_moves()
-    y_move_list = animation_test.y_moves()
-    cars_moved_list = animation_test.cars_moved()
+    x_move_list = animation_test.x_moves(algorithm_name)
+    y_move_list = animation_test.y_moves(algorithm_name)
+    cars_moved_list = animation_test.cars_moved(algorithm_name)
     plt, fig, ax = animation_test.create_animationboard()
     time_text = ax.text(0.5, 1.06,'',horizontalalignment='center',verticalalignment='top', fontfamily = 'sans serif', fontsize = 'large', weight = 'bold', transform=ax.transAxes)
 
@@ -45,4 +45,4 @@ def animate(file_name):
     writergif = animation.PillowWriter(fps = 4)
     time_string = datetime.now()
     time_string = time_string.strftime("%H%M%S")
-    animated_board.save(f"results/animation_{time_string}.gif", writer = writergif)
+    animated_board.save(f"results/{algorithm_name}/animation_{time_string}.gif", writer = writergif)

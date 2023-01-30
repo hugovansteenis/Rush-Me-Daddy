@@ -221,9 +221,9 @@ class Game():
             self.y_cords[car.type] = self.rectangles[car.type].get_y()
         return self.y_cords
 
-    def x_moves(self):
+    def x_moves(self, algorithm_name):
         """(inset description)""" 
-        with open(f'results/output.csv') as output:
+        with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:
@@ -236,9 +236,9 @@ class Game():
                             self.x_move_list.append(self.x_cords[car.type])
             return self.x_move_list
 
-    def y_moves(self):
+    def y_moves(self, algorithm_name):
         """(inset description)"""
-        with open('results/output.csv') as output:
+        with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:
@@ -251,9 +251,9 @@ class Game():
                             self.y_move_list.append(self.y_cords[car.type])
             return self.y_move_list
 
-    def cars_moved(self):
+    def cars_moved(self, algorithm_name):
         """(inset description)"""
-        with open('results/output.csv') as output:
+        with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
             for row in read_output:
