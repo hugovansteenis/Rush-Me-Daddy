@@ -16,6 +16,7 @@ def timer(duration, run_time, algorithm):
         print(f"run: {n_runs}")
         subprocess.call(["timeout", run_time, "python3", algorithm])
         n_runs += 1
+        
 
 if __name__ == "__main__":
 
