@@ -60,7 +60,7 @@ class Game():
             if self.red_unblocked():
                 bold = '\033[1m'
                 print(f"{bold}You Win{Style.RESET_ALL}")
-                # self.grid.print_grid()
+                self.grid.print_grid()
                 print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
                 print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
                 return True
