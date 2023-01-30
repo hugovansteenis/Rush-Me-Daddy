@@ -11,9 +11,14 @@ def timer(duration, run_time):
 
         while time.time() - start < duration:
             print(f"run: {n_runs}")
-            subprocess.call(["timeout", run_time, "python3", "main.py Rushhour6x6_1.csv random"])
+            output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", "Rushhour6x6_1.csv", "random", "--silent"])
+            test_output = str(output).split(":")
+
+            print("output = ", test_output)
+                        
             n_runs += 1
-            experiment_list.append(n_runs, number_moves)
+            # number_moves = 
+            # experiment_list.append(n_runs, number_moves)
 
         with open('results/experiment.csv', "w", newline='') as file:
             writer = csv.writer(file)

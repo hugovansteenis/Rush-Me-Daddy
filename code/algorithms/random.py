@@ -14,4 +14,5 @@ def random_algorithm(game):
         random_car = random.choice(game.grid.cars)
         cartype = random_car.type
         game.move_car(cartype, random_move)
+    print(len(game.history))
     game.output_to_csv("results/output.csv")

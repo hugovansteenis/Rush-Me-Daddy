@@ -4,7 +4,7 @@ from code.algorithms.depth_first import depth_first
 from code.algorithms.breadth_first import breadth_first
 from code.algorithms.greedy import greedy_algorithm
 from code.visualisation.animate import animate
-
+from experiments import random_experiment
 
 if __name__ == "__main__":
 
@@ -23,10 +23,8 @@ if __name__ == "__main__":
     if len(argv) > 2:
         if argv[2] == "random":
             algorithm_name = "Random"
-            test_game.grid.print_grid()
             random_algorithm(test_game)
             test_game.handle_output(algorithm_name)
-            exit(2)
         elif argv[2] == "depth":
             algorithm_name = "Depth First"
             test_game.grid.print_grid()
@@ -34,7 +32,6 @@ if __name__ == "__main__":
             test_game.handle_output(algorithm_name)
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
-            exit(3)
         elif argv[2] == "breadth":
             algorithm_name = "Breadth First"
             test_game.grid.print_grid()
@@ -42,7 +39,6 @@ if __name__ == "__main__":
             test_game.handle_output(algorithm_name)
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
-            exit(4)
         elif argv[2] == "greedy":
             algorithm_name = "Greedy"
             test_game.grid.print_grid()
@@ -50,7 +46,8 @@ if __name__ == "__main__":
             test_game.handle_output(algorithm_name)
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
-            exit(5)
+        elif argv[2] == "random_exp":
+            random_experiment.timer(100, 10)
         else:
             print("Wrong algorithm usage")
     else:
