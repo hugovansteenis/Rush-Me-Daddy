@@ -22,7 +22,7 @@ def timer(duration, run_time):
         n_runs += 1
         experiment_list.append((n_runs, moves))
 
-    with open('results/experiment.csv', "w", newline='') as file:
+    with open('results/random/random_experiment.csv', "w", newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["iteration", "moves"])
         for iteration in experiment_list:
