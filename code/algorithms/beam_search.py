@@ -4,13 +4,11 @@ import copy
 from code.classes.game import Game
 from code.algorithms.heuristic import heuristic_value2
 
-def breadth_first(game:Game):
+def beam_search(game:Game):
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
     w = 3
-    best_solution = None
-    number_moves = len(game.history)
 
     while len(states) > 0:
         # Create new game board state
@@ -25,6 +23,8 @@ def breadth_first(game:Game):
             exclude_zero = {0}
             moves = list(num for num in moves if num not in exclude_zero)
             
+            temp_states = []
+
             # Iterate over the possible moves per car
             for car in game.grid.cars:
                 for move in moves:
@@ -37,4 +37,9 @@ def breadth_first(game:Game):
                         _str = str(newest_game.grid)
                         if _str not in archive:
                             archive.add(_str)
-                            states.append(newest_game)
+                            temp_states.append(newest_game)
+            
+            # Keep only the w most promising states
+            temp_states = sorted(temp_states, key=lambda x: heuristic_value2(x))[:w]
+            states.extend(temp_states)
+

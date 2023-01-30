@@ -4,7 +4,19 @@ from code.algorithms.depth_first import depth_first
 from code.algorithms.breadth_first import breadth_first
 from code.algorithms.greedy import greedy_algorithm
 from code.visualisation.animate import animate
-               
+import subprocess
+import time
+
+
+def timer(duration, run_time, algorithm):
+    start = time.time()
+    n_runs = 0
+
+    while time.time() - start < duration:
+        print(f"run: {n_runs}")
+        subprocess.call(["timeout", run_time, "python3", algorithm])
+        n_runs += 1
+
 if __name__ == "__main__":
 
     from sys import argv
