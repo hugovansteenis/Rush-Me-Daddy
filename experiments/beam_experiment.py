@@ -38,7 +38,7 @@ def beam_script():
     shutil.copy("results/beam/output.csv", "results/beam/output_beam_board6.csv")
     game2.handle_output("beam")
     animate("Rushhour9x9_6.csv", "beam")
-    time_list.append("9x9_6", duration)
+    time_list.append(("9x9_6", duration))
 
     #--------------------------------------
     # Board 7
@@ -52,7 +52,7 @@ def beam_script():
     shutil.copy("results/beam/output.csv", "results/beam/output_beam_board7.csv")
     game3.handle_output("beam")
     animate('Rushhour12x12_7.csv', 'beam')
-    time_list.append("12x12_7", duration)
+    time_list.append(("12x12_7", duration))
 
     #--------------------------------------
     # Output Data

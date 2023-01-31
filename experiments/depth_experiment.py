@@ -38,7 +38,7 @@ def depth_script():
     shutil.copy("results/depth/output.csv", "results/depth/output_depth_board6.csv")
     game2.handle_output("depth")
     animate("Rushhour9x9_6.csv", "depth")
-    time_list.append("9x9_6", duration)
+    time_list.append(("9x9_6", duration))
 
     #--------------------------------------
     # Board 7
@@ -52,7 +52,7 @@ def depth_script():
     shutil.copy("results/depth/output.csv", "results/depth/output_depth_board7.csv")
     game3.handle_output("depth")
     animate('Rushhour12x12_7.csv', "depth")
-    time_list.append("12x12_7", duration)
+    time_list.append(("12x12_7", duration))
 
     #--------------------------------------
     # Output Data
