@@ -9,11 +9,13 @@ import time
 from experiments import random_experiment
 from experiments import greedy_experiment
 from experiments import beam_experiment
+from experiments import breadth_experiment
+from experiments import depth_experiment
 
 if __name__ == "__main__":
 
     from sys import argv
-
+    
     # Check the command input
     if len(argv) == 1:
         print("Usage: python rushhour.py [gameboardfile] (algorithm)")
@@ -62,6 +64,10 @@ if __name__ == "__main__":
                 animate(game_name)
         elif argv[2] == "random_exp":
             random_experiment.timer(100, 10)
+        elif argv[2] == "breadth_exp":
+            breadth_experiment.breadth_script()
+        elif argv[2] == "depth_exp":
+            depth_experiment.depth_script()
         elif argv[2] == "greedy_exp":
             greedy_experiment.timer(100, 100)
         elif argv[2] == "beam_exp":

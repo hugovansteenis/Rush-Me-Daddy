@@ -169,6 +169,44 @@ class Game():
         time_string = datetime.now()
         time_string = time_string.strftime("%H%M%S")
         plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
+
+    def histogram(self, algorithm_name):
+        with open(f'results/random/12x12_7_random_experiment.csv') as output:
+            list_data = []
+            next(output)
+            read_output = csv.reader(output)
+            for row in read_output:
+                list_data.append(row[1])
+            plt.hist(list_data, density=True, bins=1000)
+            plt.savefig(f'results/{algorithm_name}/{algorithm_name}_histogram')
+        # reader = csv.reader(open(f'results/{algorithm_name}/12x12_7_random_experiment.csv'))
+        # counter = defaultdict(int)
+
+        # for i, row in enumerate(reader):
+        #     if i == 0:
+        #         continue
+        
+        #     column_value = row[1]
+        #     counter[column_value] += 1
+
+        # # Puts all the car_types and their amount of moves in a list and sorts the list on alphabetical order.
+        # list_counter = [(column_value, cnt) for column_value, cnt in counter.items()]
+        # list_counter.sort(key = lambda x: x[1])
+        # print(list_counter)
+
+        # # # Defines the empty lists for later use.
+        # # list_moves = []
+        # # list_occ = []
+
+
+        # # for data in list_counter:
+        # #     list_moves.append(data[0])
+        # #     list_occ.append(data[1])
+        # # print(list_moves, list_occ)
+        
+        # plt.hist(list_moves, list_occ)
+        # plt.savefig(f'results/{algorithm_name}/{algorithm_name}_histogram')
+
         
     def __hash__(self) -> int:
         return hash(str(self.grid))
