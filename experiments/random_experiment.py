@@ -11,7 +11,7 @@ def timer(duration, run_time):
 
     while time.time() - start < duration:
         print(f"run: {n_runs}")
-        output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", "Rushhour6x6_1.csv", "random", "--silent"])
+        output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", "Rushhour6x6_1.csv", "random"])
         output_list = str(output).split("\n")
 
         # Regular expression to find the number after [Amount of Moves:]

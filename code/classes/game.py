@@ -59,11 +59,11 @@ class Game():
             self.history.append((car_type, movement))
             # Completes the program if the red car is in the right spot
             if self.red_unblocked():
-                # bold = '\033[1m'
-                # print(f"{bold}You Win{Style.RESET_ALL}")
+                bold = '\033[1m'
+                print(f"{bold}You Win{Style.RESET_ALL}")
                 # self.grid.print_grid()
-                # print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
-                # print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
+                print(f"{bold}Amount of attempts: {self.counter}{Style.RESET_ALL}")
+                print(f"{bold}Amount of moves: {len(self.history)}{Style.RESET_ALL}")
                 return True
             return False
 
@@ -157,19 +157,35 @@ class Game():
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
-        tl = plt.gca().get_xticklabels()
-        maxsize = max([t.get_window_extent().width for t in tl])
-        m = 0.5
-        s = maxsize/plt.gcf().dpi*200*m
-        margin = m/plt.gcf().get_size_inches()[0]
-        plt.gcf().subplots_adjust(left=margin, right=1.-margin)
-        plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
+        # tl = plt.gca().get_xticklabels()
+        # maxsize = max([t.get_window_extent().width for t in tl])
+        # m = 0.5
+        # s = maxsize/plt.gcf().dpi*200*m
+        # margin = m/plt.gcf().get_size_inches()[0]
+        # plt.gcf().subplots_adjust(left=margin, right=1.-margin)
+        # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
         time_string = datetime.now()
         time_string = time_string.strftime("%H%M%S")
-        plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
+        # plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
         
+    def histogram(self, algorithm_name):
+        # Making dataframe 
+        experiment_df = pd.read_csv("results/random/6x6_1_random_experiment.csv")
+        # print("DATAFRAME 1")
+        # print(experiment_df)
+
+        # Get number of occurences for each value in moves column
+        # experiment_df["occurences"] = experiment_df["moves"].value_counts()
+        # experiment_df["occurences"] = experiment_df.groupby(['moves']).transform('count')
+        # print("OCCURENCES")
+        # print(experiment_df)
+        
+        experiment_df.plot.hist(bins=15, column=['moves'])
+        plt.show()
+
+
     def __hash__(self) -> int:
         return hash(str(self.grid))
 
