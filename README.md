@@ -10,7 +10,7 @@ Bron: [Rush Hour](https://ah.proglab.nl/cases/rush-hour)
 *Let op! Voor Mac gebruikers geldt bij alle command line argumenten dat python3 gebruikt moet worden in plaats van python.*
 
 Standaard input:  
-`python main.py [gameboardfile] [algorithm]`
+```python main.py [gameboardfile] [algorithm]```
 
 Voor alle gameboard bestanden kan je navigeren naar de data folder. Er is keuze uit 6x6, 9x9, en 12x12 grids. Ook zijn ze gesorteerd op moeilijkheidsgraad waarbij de makkelijkste de eerste in de lijst zijn.   
 
