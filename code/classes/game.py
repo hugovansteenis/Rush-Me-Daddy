@@ -168,24 +168,8 @@ class Game():
         # Saves the graph
         time_string = datetime.now()
         time_string = time_string.strftime("%H%M%S")
-        # plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
+        plt.savefig(f'results/{algorithm_name}/graph_{time_string}.png')
         
-    def histogram(self, algorithm_name):
-        # Making dataframe 
-        experiment_df = pd.read_csv("results/random/6x6_1_random_experiment.csv")
-        # print("DATAFRAME 1")
-        # print(experiment_df)
-
-        # Get number of occurences for each value in moves column
-        # experiment_df["occurences"] = experiment_df["moves"].value_counts()
-        # experiment_df["occurences"] = experiment_df.groupby(['moves']).transform('count')
-        # print("OCCURENCES")
-        # print(experiment_df)
-        
-        experiment_df.plot.hist(bins=15, column=['moves'])
-        plt.show()
-
-
     def __hash__(self) -> int:
         return hash(str(self.grid))
 
