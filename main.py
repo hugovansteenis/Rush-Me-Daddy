@@ -12,6 +12,17 @@ from experiments import beam_experiment
 from experiments import breadth_experiment
 from experiments import depth_experiment
 
+def run_algorithm(algorithm, name, is_silent):
+    if is_silent:        
+        test_game.print_grid = False
+    else:
+        test_game.grid.print_grid()
+    
+    algorithm(test_game)
+    
+    if not is_silent:
+        test_game.handle_output(name)
+
 if __name__ == "__main__":
 
     from sys import argv
@@ -26,11 +37,11 @@ if __name__ == "__main__":
     test_game = game.Game(game_name)
 
     # Check if the user wants to work with an algorithm or use it manually.
-    if len(argv) > 2:
+    if len(argv) > 2:    
+        is_silent = len(argv) > 3 and "silent" in argv
+    
         if argv[2] == "random":
-            algorithm_name = "Random"
-            random_algorithm(test_game)
-            test_game.handle_output(algorithm_name)
+            run_algorithm(random_algorithm, "Random", is_silent)
         elif argv[2] == "depth":
             algorithm_name = "Depth"
             test_game.grid.print_grid()
@@ -49,10 +60,7 @@ if __name__ == "__main__":
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
         elif argv[2] == "greedy":
-            algorithm_name = "Greedy"
-            test_game.grid.print_grid()
-            greedy_algorithm(test_game)
-            test_game.handle_output(algorithm_name)
+            run_algorithm(greedy_algorithm, "Greedy", is_silent)
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
         elif argv[2] == "beam":
@@ -65,7 +73,7 @@ if __name__ == "__main__":
         elif argv[2] == "random_exp":
             random_experiment.timer(3600, 60)
         elif argv[2] == "greedy_exp":
-            greedy_experiment.timer(100, 100)
+            greedy_experiment.timer(3600, 60)
         elif argv[2] == "beam_exp":
             beam_experiment.timer(100, 100)
         else:
