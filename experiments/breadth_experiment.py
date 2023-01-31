@@ -38,7 +38,7 @@ def breadth_script():
     shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board6.csv")
     game2.handle_output("breadth")
     animate("Rushhour9x9_6.csv", "breadth")
-    time_list.append("9x9_6", duration)
+    time_list.append(("9x9_6", duration))
 
     #--------------------------------------
     # Board 7
@@ -52,7 +52,7 @@ def breadth_script():
     shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board7.csv")
     game3.handle_output("breadth")
     animate('Rushhour12x12_7.csv', 'breadth')
-    time_list.append("12x12_7", duration)
+    time_list.append(("12x12_7", duration))
 
     #--------------------------------------
     # Output Data
