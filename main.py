@@ -63,7 +63,7 @@ if __name__ == "__main__":
             if len(argv) > 3 and argv[3] == "visual":
                 animate(game_name)
         elif argv[2] == "random_exp":
-            random_experiment.timer(100, 10)
+            random_experiment.timer(3600, 60)
         elif argv[2] == "greedy_exp":
             greedy_experiment.timer(100, 100)
         elif argv[2] == "beam_exp":

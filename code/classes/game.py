@@ -114,7 +114,7 @@ class Game():
     def histogram(self, algorithm_name):
         """Creates a histogram from a dataframe"""
         # Making dataframe 
-        experiment_df = pd.read_csv("results/random/6x6_1_random_experiment.csv")
+        experiment_df = pd.read_csv(f"results/{algorithm_name}/6x6_1_random_experiment.csv")
         
         # Plot histogram
         experiment_df.plot.hist(bins=15, column=['moves'])
