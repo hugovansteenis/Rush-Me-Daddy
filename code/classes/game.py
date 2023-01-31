@@ -18,6 +18,7 @@ class Game():
         """(insert description)"""
         self.game = game
         self.grid = 0 
+        self.grid_size = ""
         self.load_input(f"data/{game}")
         self.history = []
         self.counter = 0
@@ -35,12 +36,18 @@ class Game():
     def load_input(self, filename):
         """Checks the grid size in the file name.
         Also reads the input data given and creates all the car objects."""
-        if self.game[8].isnumeric():
-            number = self.game[8]               # MAKE GLOBAL VARIABLE
-            if self.game[9].isnumeric():
-                number += self.game[9]
-            self.grid = Grid(number)
-            number = int(number)
+        temp = []
+        for i in range(len(self.game)):
+            if self.game[i].isnumeric():
+                temp.append(self.game[i])
+            if self.game[i] == 'x':
+                break
+        
+        for number in temp:
+            self.grid_size += number
+
+        self.grid = Grid(self.grid_size)
+        self.grid_size = int(self.grid_size)
         
         # Reads the inputdata and creates all the necessary cars objects
         with open(filename) as f:
