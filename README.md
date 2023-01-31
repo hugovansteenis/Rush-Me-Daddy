@@ -10,7 +10,7 @@ Bron: [Rush Hour](https://ah.proglab.nl/cases/rush-hour)
 *Let op! Voor Mac gebruikers geldt bij alle command line argumenten dat python3 gebruikt moet worden in plaats van python.*
 
 Standaard input:  
-```bash
+```
 python main.py [gameboardfile] [algorithm]
 ```
 
