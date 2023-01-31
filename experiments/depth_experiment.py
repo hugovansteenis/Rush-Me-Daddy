@@ -43,16 +43,16 @@ def depth_script():
     #--------------------------------------
     # Board 7
 
-    # print("Board 7 is currently running")
-    # game3 = game.Game('Rushhour12x12_7.csv')
-    # start = time.time()
-    # depth_first(game3)
-    # end = time.time()
-    # duration = end - start
-    # shutil.copy("results/depth/output.csv", "results/depth/output_depth_board7.csv")
-    # game3.handle_output("depth")
-    # animate('Rushhour12x12_7.csv', "depth")
-    # time_list.append("12x12_7", duration)
+    print("Board 7 is currently running")
+    game3 = game.Game('Rushhour12x12_7.csv')
+    start = time.time()
+    depth_first(game3)
+    end = time.time()
+    duration = end - start
+    shutil.copy("results/depth/output.csv", "results/depth/output_depth_board7.csv")
+    game3.handle_output("depth")
+    animate('Rushhour12x12_7.csv', "depth")
+    time_list.append("12x12_7", duration)
 
     #--------------------------------------
     # Output Data

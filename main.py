@@ -67,7 +67,11 @@ if __name__ == "__main__":
         elif argv[2] == "greedy_exp":
             greedy_experiment.timer(100, 100)
         elif argv[2] == "beam_exp":
-            beam_experiment.timer(100, 100)
+            beam_experiment.beam_script()
+        elif argv[2] == "breadth_exp":
+            breadth_experiment.breadth_script()
+        elif argv[2] == "depth_exp":
+            depth_experiment.depth_script()
         else:
             print("Wrong algorithm usage")
     else:
