@@ -17,11 +17,14 @@ def run_algorithm(algorithm, name, is_silent):
         test_game.print_grid = False
     else:
         test_game.grid.print_grid()
-    
+
     algorithm(test_game)
     
     if not is_silent:
         test_game.handle_output(name)
+
+    if len(argv) > 3 and argv[3] == "visual" and name != "Random":
+        animate(game_name, name)
 
 if __name__ == "__main__":
 
@@ -43,33 +46,13 @@ if __name__ == "__main__":
         if argv[2] == "random":
             run_algorithm(random_algorithm, "Random", is_silent)
         elif argv[2] == "depth":
-            algorithm_name = "Depth"
-            test_game.grid.print_grid()
-            start = time.time()
-            depth_first(test_game)
-            end = time.time()
-            print(end - start)
-            test_game.handle_output(algorithm_name)
-            if len(argv) > 3 and argv[3] == "visual":
-                animate(game_name)
+            run_algorithm(depth_first, "Depth", False)
         elif argv[2] == "breadth":
-            algorithm_name = "Breadth"
-            test_game.grid.print_grid()
-            breadth_first(test_game)
-            test_game.handle_output(algorithm_name)
-            if len(argv) > 3 and argv[3] == "visual":
-                animate(game_name)
+            run_algorithm(breadth_first, "Breadth", False)
         elif argv[2] == "greedy":
             run_algorithm(greedy_algorithm, "Greedy", is_silent)
-            if len(argv) > 3 and argv[3] == "visual":
-                animate(game_name)
         elif argv[2] == "beam":
-            algorithm_name = "Beam"
-            test_game.grid.print_grid()
-            beam_search(test_game)
-            test_game.handle_output(algorithm_name)
-            if len(argv) > 3 and argv[3] == "visual":
-                animate(game_name)
+            run_algorithm(beam_search, "Beam", False)
         elif argv[2] == "random_exp":
             random_experiment.timer(3600, 60)
         elif argv[2] == "greedy_exp":
