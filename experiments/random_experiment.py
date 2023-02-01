@@ -13,7 +13,7 @@ def timer(duration, run_time, board_name):
 
     while time.time() - start < duration:
         print(f"run: {n_runs}")
-        output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", f"{board_name}", "random", "silent"])
+        output = subprocess.check_output(["timeout", f"{run_time}", "python", "main.py", f"{board_name}", "random", "silent"])
         output_list = str(output).split("\n")
 
         # Regular expression to find the number after [Amount of Moves:]
