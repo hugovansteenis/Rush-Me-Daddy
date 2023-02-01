@@ -20,7 +20,6 @@ def depth_first(game):
             # print(f"length game history: {len(game.history)}")
             game.output_to_csv("results/depth/output.csv")
             return True
-
         else:
             # Build children 
             moves = list(range(-5, 6))

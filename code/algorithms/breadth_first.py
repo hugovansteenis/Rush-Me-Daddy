@@ -2,6 +2,7 @@
 
 import copy
 from code.classes.game import Game
+from code.classes.grid import Grid
 
 
 def breadth_first(game:Game):
@@ -16,7 +17,7 @@ def breadth_first(game:Game):
 
         # If board is solved, return solution.csv
         if game.red_unblocked():
-            print(f"length game history: {len(game.history)}")
+            # print(f"length game history: {len(game.history)}")
             game.output_to_csv("results/breadth/output.csv")
             return True
         else:
