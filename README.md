@@ -28,14 +28,30 @@ python main.py Rushhour6x6_1.csv random_exp
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/random/6x6_1_exp_graph.png)
 <br></br>
 ## Greedy
+Input:
+```
+python main.py Rushhour6x6_2.csv greedy_exp
+```
 ![6x6_2_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/greedy/6x6_2_exp_graph.png)
 <br></br>
 ## Breadth First
-
+Input:
+```
+python main.py Rushhour6x6_2.csv greedy_exp
+```
+![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/breadth/graph_breadth_1.png)
 <br></br>
 ## Depth First
+Input:
+```
+python main.py Rushhour6x6_2.csv greedy_exp
+```
 
+![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/depth/graph_depth_1.png)
 <br></br>
 ## Beam Search
-
-
+Input:
+```
+python main.py Rushhour6x6_2.csv greedy_exp
+```
+![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/beam/graph_beam_1.png)
