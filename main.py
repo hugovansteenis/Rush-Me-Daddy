@@ -5,12 +5,12 @@ from code.algorithms.breadth_first import breadth_first
 from code.algorithms.greedy import greedy_algorithm
 from code.algorithms.beam_search import beam_search
 from code.visualisation.animate import animate
-import time
 from experiments import random_experiment
 from experiments import greedy_experiment
 from experiments import beam_experiment
 from experiments import breadth_experiment
 from experiments import depth_experiment
+
 
 def run_algorithm(algorithm, name, is_silent):
     if is_silent:        
