@@ -3,7 +3,7 @@ import time
 import csv
 import re
 
-def timer(duration, run_time):
+def timer(duration, run_time, board_name):
     """Creates an experiment file which writes down the number of occurences and moves for the random algorithm"""
     start = time.time()
     n_runs = 0
@@ -11,7 +11,7 @@ def timer(duration, run_time):
 
     while time.time() - start < duration:
         print(f"run: {n_runs}")
-        output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", "Rushhour6x6_1.csv", "random", "silent"])
+        output = subprocess.check_output(["timeout", f"{run_time}", "python3", "main.py", f"{board_name}", "random", "silent"])
         output_list = str(output).split("\n")
 
         # Regular expression to find the number after [Amount of Moves:]
