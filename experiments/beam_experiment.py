@@ -8,7 +8,9 @@ import time
 import shutil
 import csv
 
+
 def beam_script():
+    "Runs the beam search algorithm on the first three boards and saves all data"
 
     time_list = []
 

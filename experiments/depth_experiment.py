@@ -9,6 +9,7 @@ import shutil
 import csv
 
 def depth_script():
+    "Runs the depth first search algorithm on the first three boards and saves all data."
 
     time_list = []
 

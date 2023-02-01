@@ -168,13 +168,13 @@ class Game():
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
-        # tl = plt.gca().get_xticklabels()
-        # maxsize = max([t.get_window_extent().width for t in tl])
-        # m = 0.5
-        # s = maxsize/plt.gcf().dpi*200*m
-        # margin = m/plt.gcf().get_size_inches()[0]
-        # plt.gcf().subplots_adjust(left=margin, right=1.-margin)
-        # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
+        tl = plt.gca().get_xticklabels()
+        maxsize = max([t.get_window_extent().width for t in tl])
+        m = 0.5
+        s = maxsize/plt.gcf().dpi*200*m
+        margin = m/plt.gcf().get_size_inches()[0]
+        plt.gcf().subplots_adjust(left=margin, right=1.-margin)
+        plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
         time_string = datetime.now()
@@ -188,9 +188,9 @@ class Game():
     # Animation functions based on unutbu example (https://stackoverflow.com/questions/31921313/matplotlib-animation-moving-square)
 
     def update_cars(self):
-        """Creates all the car-rectangles for the animation."""
+        """Creates all the car-rectangles for the animation"""
         for car in self.grid.cars:
-            # Create the rectangles depening on the different car aspects. https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html
+            # Create the rectangles depening on the different car aspects. (https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html)
             if car.orientation == 'H' and car.type != 'X':
                 self.rectangles[car.type] = (Rectangle((car.col, car.row), car.length, 1, facecolor = car.color, edgecolor = 'black'))
             elif car.type == 'X':
@@ -203,7 +203,7 @@ class Game():
         return self.rectangles
 
     def create_animationboard(self):
-        """Creates the board and places all the rectangles."""
+        """Creates the board and places all the rectangles"""
         # Creates a subplot (https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
         fig, ax = plt.subplots()
         ax.set_xlim(0, self.grid.width)
@@ -221,19 +221,19 @@ class Game():
         return plt, fig, ax
 
     def x_coordinates(self):
-        """(inset description)""" 
+        """Fills a dictionary with the car type as key and the x cord of the rectangle""" 
         for car in self.grid.cars:
             self.x_cords[car.type] = self.rectangles[car.type].get_x()
         return self.x_cords
 
     def y_coordinates(self):
-        """(inset description)""" 
+        """Fills a dictionary with the car type as key and the y cord of the rectangle""" 
         for car in self.grid.cars:
             self.y_cords[car.type] = self.rectangles[car.type].get_y()
         return self.y_cords
 
     def x_moves(self, algorithm_name):
-        """(inset description)""" 
+        """Fills a list with all the cars moved and updates the x cord""" 
         with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
@@ -248,7 +248,7 @@ class Game():
             return self.x_move_list
 
     def y_moves(self, algorithm_name):
-        """(inset description)"""
+        """Fills a list with all the cars moved and updates the y cord"""
         with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
@@ -263,7 +263,7 @@ class Game():
             return self.y_move_list
 
     def cars_moved(self, algorithm_name):
-        """(inset description)"""
+        """Fills a list with all the car types which moved"""
         with open(f'results/{algorithm_name}/output.csv') as output:
             next(output)
             read_output = csv.reader(output)
