@@ -2,7 +2,8 @@
 Algoritmen en Heuristieken groepje met Daan, Hugo &amp; Sarah  
 
 ## Rush Hour Case
-Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend karakter. In een veld van 6 hoog en 6 breed staat een rode auto, de jouwe, en die moet naar de uitgang die recht voor je ligt. Maar andere voertuigen versperren de weg; auto’s van twee eenheden lang en trucks van drie eenheden lang, die alleen in hun rijrichting bewogen mogen worden. Ze mogen niet draaien. De opdracht is: beweeg je auto naar buiten en schrijf een computerprogramma om dat voor je te doen.
+Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend karakter. In een veld van 6 hoog en 6 breed staat een rode auto, de jouwe, en die moet naar de uitgang die recht voor je ligt. Maar andere voertuigen versperren de weg; auto’s van twee eenheden lang en trucks van drie eenheden lang, die alleen in hun rijrichting bewogen mogen worden. Ze mogen niet draaien. De opdracht is: beweeg je auto naar buiten en schrijf een computerprogramma om dat voor je te doen.  
+![Rushhour Logo](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/rushhour_logo.jpeg)
 
 Bron: [Rush Hour](https://ah.proglab.nl/cases/rush-hour)
 
