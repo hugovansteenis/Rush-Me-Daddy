@@ -46,6 +46,7 @@ Input:
 python main.py Rushhour6x6_2.csv greedy_exp
 ```
 Greedy houdt in dat er twee heuristieken worden toegepast. Als eerste wordt er gekeken of de rode auto 1 zet naar rechts kan, als dat niet kan wordt er gekeken of er een blokkade voor de rode auto is die 1 zet omlaag kan, als dat niet kan wordt er een willekeurige zet uitgevoerd.
+
 ![6x6_2_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/greedy/6x6_2_exp_graph.png)
 <br></br>
 ## Breadth First
@@ -71,4 +72,5 @@ Input:
 python main.py Rushhour6x6_2.csv beam_exp
 ```
 Beam Search is een compromis en kiest steeds de top [`w`] aantal states uit waarbij `w` gekozen kan worden. Dit geeft niet altijd de beste oplossing maar kost wel minder geheugen dan breadth first search.
+
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/beam/graph_beam_1.png)
