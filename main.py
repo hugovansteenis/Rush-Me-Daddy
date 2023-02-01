@@ -57,7 +57,7 @@ if __name__ == "__main__":
         elif argv[2] == "random_exp":
             random_experiment.timer(1800, 60, game_name)
         elif argv[2] == "greedy_exp":
-            greedy_experiment.timer(3600, 60)
+            greedy_experiment.timer(3600, 60, game_name)
         elif argv[2] == "beam_exp":
             beam_experiment.beam_script()
         elif argv[2] == "breadth_exp":
