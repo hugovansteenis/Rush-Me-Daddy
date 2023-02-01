@@ -8,7 +8,7 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 
 Bron: [Rush Hour](https://ah.proglab.nl/cases/rush-hour)
 
-## Input
+## Input en Usage
 *<b style="color:red">Let op! Voor Mac gebruikers geldt bij alle command line argumenten dat python3 gebruikt moet worden in plaats van python.</b>*
 
 Standaard input:  
@@ -23,7 +23,13 @@ Om het spel zelf te spelen kan je het algoritme weglaten. Vervolgens kan je een 
 Voor elk algoritme geldt dat er standaard een output CSV bestand wordt gegenereerd. Er kan ook een experiment CSV bestand worden gegenereerd wat per algoritme extra data biedt. Hieronder zijn alle command line argumenten uitgelegd per algoritme en ook hoe je de resultaten kan reproduceren.  
 
 ## Repository Overview
-Alle code staat in de `code` folder. Deze is onderverdeeld in algorithms, classes, en visualisation. In de `data` folder staan de gebruikte game boards. In de `experiments` folder staan alle experimenten per algoritme. In de `results` folder staan de resultaten voor elk algoritme zoals visualisaties, een output CSV bestand met alle gemaakt moves voor de game en animaties van de moves en een experiment CSV bestand aangeduid met 'exp'. In de main folder staan de README en benodigde libraries. Verder worden vanuit main.py alle algoritmes aangeroepen en kan je de game starten.
+Alle code staat in de `code` folder. Deze is onderverdeeld in algorithms, classes, en visualisation. Er bestaan drie classes.
+
+De `car` class die informatie over de auto objecten heeft, de `game` class die zorgt dat het spel gespeeld kan worden, auto's kunnen bewegen en checkt of het spel al gewonnen is en de `grid` class die het board maakt.
+
+In `algorithms` staan alle 5 algoritmes die je kan gebruiken om de game op te lossen.
+
+In de `data` folder staan de gebruikte game boards. In de `experiments` folder staan alle experimenten per algoritme. In de `results` folder staan de resultaten voor elk algoritme zoals visualisaties, een output CSV bestand met alle gemaakt moves voor de game en animaties van de moves en een experiment CSV bestand aangeduid met 'exp'. In de main folder staan de README en benodigde libraries. Verder worden vanuit `main.py` alle algoritmes aangeroepen en kan je de game starten.
 <br></br>
 ## Random
 De benodigde input om de volgende resultaten te krijgen is: 
