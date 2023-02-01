@@ -16,12 +16,10 @@ def greedy_algorithm(game):
         # Checks if the red car can move to the right
         if game.grid.can_move(red_car, 1):
             game.move_car(red_car, 1)
-            continue
         # Checks if the cars blocking the red car can move using the chosen heuristic in heuristic.py
         for car in heuristic.heuristic_blocking_red_car(game):
             if game.grid.can_move(car, 1):
                 game.move_car(car.type, 1)
-                break
         # Chooses a random amount of steps and a random car
         random_move = random.choice(numbers)
         random_car = random.choice(game.grid.cars)

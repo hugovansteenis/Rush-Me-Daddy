@@ -89,3 +89,7 @@ class Grid():
                 else:
                     print(f"  {color}{item}{Style.RESET_ALL}", end="")
             print()
+
+    def __str__(self):
+         """(insert description)"""
+         return "\n".join(str(row) for row in self.board)

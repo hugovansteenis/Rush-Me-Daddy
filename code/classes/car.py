@@ -22,3 +22,7 @@ class Car():
             self.col += movement
         else:
             self.row += movement
+    
+    def __str__(self):
+         """Returns the string function of the car object"""
+         return f'Car type: {self.type}, Orientation: {self.orientation}, Column: {self.col}, Row: {self.row}, Length: {self.length}.'
