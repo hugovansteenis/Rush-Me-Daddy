@@ -28,7 +28,7 @@ python main.py Rushhour6x6_1.csv random_exp
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/random/6x6_1_exp_graph.png)
 <br></br>
 ## Greedy
-
+![6x6_2_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/greedy/6x6_2_exp_graph.png)
 <br></br>
 ## Breadth First
 
