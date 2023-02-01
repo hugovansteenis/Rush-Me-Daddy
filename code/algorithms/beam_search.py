@@ -12,6 +12,7 @@ def beam_search(game:Game):
     archive = set()
     w = 3
 
+    # While there are states left to navigate, keep going
     while len(states) > 0:
         # Create new game board state
         game = states.pop(0)
