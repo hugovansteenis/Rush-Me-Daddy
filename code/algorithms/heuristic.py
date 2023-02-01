@@ -16,7 +16,7 @@ def heuristic_value2(game):
             blocked_cars += 1
     return blocked_cars
 
-def heuristic_value6(game):
+def heuristic_blocking_red_car(game):
     """ This heuristic calculates the number of cars blocking the red cars path and puts each car_type in a list.
     Then returns the list """
     blocked_cars = []

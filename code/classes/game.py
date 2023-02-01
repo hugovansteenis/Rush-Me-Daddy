@@ -38,11 +38,13 @@ class Game():
         Also reads the input data given and creates all the car objects."""
         temp = []
         for i in range(len(self.game)):
+            # Checks the filename for numbers in the name and puts them in the empty temp list
             if self.game[i].isnumeric():
                 temp.append(self.game[i])
+            # If i in the for loop is x the for loop stops
             if self.game[i] == 'x':
                 break
-        
+        # Fills/creates the grid_size variable and creates the grid
         for number in temp:
             self.grid_size += number
 

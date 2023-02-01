@@ -6,7 +6,7 @@ from code.visualisation.histogram import make_histogram
 
 
 def timer(duration, run_time, board_name):
-    """Creates an experiment file which writes down the number of occurences and moves for the random algorithm"""
+    """Creates an experiment file which writes down the number of occurences and moves for the greedy algorithm"""
     start = time.time()
     n_runs = 0
     experiment_list = []

@@ -74,7 +74,3 @@ if __name__ == "__main__":
             if test_game.move_car(x[0], int(x[1])):
                 break
             test_game.grid.print_grid()
-
-
-    
-
