@@ -40,21 +40,22 @@ if __name__ == "__main__":
     test_game = game.Game(game_name)
 
     # Check if the user wants to work with an algorithm or use it manually.
-    if len(argv) > 2:    
-        is_silent = len(argv) > 3 and "silent" in argv
+    if len(argv) > 2:   
+        # don't print output if there are more than three arguments given and one is "silent" 
+        is_silent = (len(argv) > 3) and ("silent" in argv)
     
         if argv[2] == "random":
             run_algorithm(random_algorithm, "Random", is_silent)
         elif argv[2] == "depth":
-            run_algorithm(depth_first, "Depth", False)
+            run_algorithm(depth_first, "Depth", is_silent)
         elif argv[2] == "breadth":
-            run_algorithm(breadth_first, "Breadth", False)
+            run_algorithm(breadth_first, "Breadth", is_silent)
         elif argv[2] == "greedy":
             run_algorithm(greedy_algorithm, "Greedy", is_silent)
         elif argv[2] == "beam":
-            run_algorithm(beam_search, "Beam", False)
+            run_algorithm(beam_search, "Beam", is_silent)
         elif argv[2] == "random_exp":
-            random_experiment.timer(3600, 60)
+            random_experiment.timer(1800, 60, game_name)
         elif argv[2] == "greedy_exp":
             greedy_experiment.timer(3600, 60)
         elif argv[2] == "beam_exp":
