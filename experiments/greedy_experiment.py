@@ -2,6 +2,8 @@ import subprocess
 import time
 import csv
 import re
+from code.visualisation.histogram import make_histogram
+
 
 def timer(duration, run_time, board_name):
     """Creates an experiment file which writes down the number of occurences and moves for the random algorithm"""
@@ -27,3 +29,5 @@ def timer(duration, run_time, board_name):
         writer.writerow(["iteration", "moves"])
         for iteration in experiment_list:
             writer.writerow(iteration)
+    
+    make_histogram("greedy")

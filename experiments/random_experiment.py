@@ -2,6 +2,8 @@ import subprocess
 import time
 import csv
 import re
+from code.visualisation.histogram import make_histogram
+
 
 def timer(duration, run_time, board_name):
     """Creates an experiment file which writes down the number of occurences and moves for the random algorithm"""
@@ -22,8 +24,12 @@ def timer(duration, run_time, board_name):
         n_runs += 1
         experiment_list.append((n_runs, moves))
 
+    # Save the iterations and number of moves in a CSV file
     with open('results/random/random_experiment.csv', "w", newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["iteration", "moves"])
         for iteration in experiment_list:
             writer.writerow(iteration)
+    
+    # Generate histogram from experiment CSV file
+    make_histogram("random")
