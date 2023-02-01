@@ -13,51 +13,51 @@ def breadth_script():
     time_list = []
 
     #-------------------------------------
-    # Board 3 
+    # Board 1 
 
-    print("Board 3 is currently running")
-    game1 = game.Game("Rushhour6x6_3.csv")
+    print("Board 1 is currently running")
+    game1 = game.Game("Rushhour6x6_1.csv")
     start = time.time()
     breadth_first(game1)
     end = time.time()
     duration = end - start
-    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board3.csv")
+    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board1.csv")
     game1.handle_output("breadth")
-    animate("Rushhour6x6_3.csv", "breadth")
-    time_list.append(("6x6_3", duration))
+    animate("Rushhour6x6_1.csv", "breadth")
+    time_list.append(("6x6_1", duration))
 
     #-------------------------------------
-    # Board 6
+    # Board 2
 
-    print("Board 6 is currently running")
-    game2 = game.Game('Rushhour9x9_6.csv')
+    print("Board 2 is currently running")
+    game2 = game.Game('Rushhour6x6_2.csv')
     start = time.time()
     breadth_first(game2)
     end = time.time()
     duration = end - start
-    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board6.csv")
+    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board2.csv")
     game2.handle_output("breadth")
-    animate("Rushhour9x9_6.csv", "breadth")
-    time_list.append(("9x9_6", duration))
+    animate("Rushhour6x6_2.csv", "breadth")
+    time_list.append(("6x6_2", duration))
 
     #--------------------------------------
-    # Board 7
+    # Board 3
 
-    print("Board 7 is currently running")
-    game3 = game.Game('Rushhour12x12_7.csv')
+    print("Board 3 is currently running")
+    game3 = game.Game('Rushhour6x6_3.csv')
     start = time.time()
     breadth_first(game3)
     end = time.time()
     duration = end - start
-    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board7.csv")
+    shutil.copy("results/breadth/output.csv", "results/breadth/output_breadth_board3.csv")
     game3.handle_output("breadth")
-    animate('Rushhour12x12_7.csv', 'breadth')
-    time_list.append(("12x12_7", duration))
+    animate('Rushhour6x6_3.csv', 'breadth')
+    time_list.append(("6x6_3", duration))
 
     #--------------------------------------
     # Output Data
 
-    with open("results/breadth/breadth_first_results.csv", "w", newline='') as file:
+    with open("results/breadth/breadth_first_results_123.csv", "w", newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["board", "time"])
         for move in time_list:
