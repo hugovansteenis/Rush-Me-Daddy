@@ -6,6 +6,7 @@ from code.classes.grid import Grid
 
 
 def depth_first(game):
+    """Searches a graph for all possible solutions by traversing the nodes one by one vertically"""
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()

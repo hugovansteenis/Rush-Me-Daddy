@@ -1,5 +1,6 @@
 from code.classes.grid import Grid
 
+
 def find_red_car(game):
     """ Finds the red car within the grid and stores this in a variable. """
     for car in game.grid.cars:

@@ -2,9 +2,10 @@
 
 import copy
 from code.classes.game import Game
-from code.algorithms.heuristic import heuristic_value2
+
 
 def breadth_first(game:Game):
+    """Searches a graph for all possible solutions by traversing all nodes horizontally until all states are seen"""
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()

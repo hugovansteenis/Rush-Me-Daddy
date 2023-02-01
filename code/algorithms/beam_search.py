@@ -4,7 +4,9 @@ import copy
 from code.classes.game import Game
 from code.algorithms.heuristic import heuristic_value2
 
+
 def beam_search(game:Game):
+    """Searches a graph for a solution state by selecting only the w most promising states"""
     # Initialize states and archive
     states = [copy.deepcopy(game)]
     archive = set()
@@ -14,7 +16,7 @@ def beam_search(game:Game):
         # Create new game board state
         game = states.pop(0)
 
-        # If board is solved, return solution.csv
+        # If board is solved, save solution in a CSV file
         if game.red_unblocked():
             print(f"length game history: {len(game.history)}")
             game.output_to_csv("results/beam/output.csv")
@@ -41,7 +43,7 @@ def beam_search(game:Game):
                             archive.add(_str)
                             temp_states.append(newest_game)
             
-            # Keep only the w most promising states
+            # Keep only the w most promising states which have the least cars blocking the red car
             temp_states = sorted(temp_states, key=lambda x: heuristic_value2(x))[:w]
             states.extend(temp_states)
 
