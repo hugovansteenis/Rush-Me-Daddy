@@ -25,7 +25,7 @@ De benodigde input om de volgende resultaten te krijgen is:
 ```
 python main.py Rushhour6x6_1.csv random_exp
 ```
-[6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/random/6x6_1_exp_graph.png)
+![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/random/6x6_1_exp_graph.png)
 <br></br>
 ## Greedy
 
