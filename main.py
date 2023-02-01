@@ -5,6 +5,9 @@ from code.algorithms.breadth_first import breadth_first
 from code.algorithms.greedy import greedy_algorithm
 from code.algorithms.beam_search import beam_search
 from code.visualisation.animate import animate
+
+from code.visualisation.histogram import make_histogram
+
 from experiments import random_experiment
 from experiments import greedy_experiment
 from experiments import beam_experiment
@@ -54,7 +57,8 @@ if __name__ == "__main__":
         elif argv[2] == "breadth":
             run_algorithm(breadth_first, "Breadth", is_silent)
         elif argv[2] == "greedy":
-            run_algorithm(greedy_algorithm, "Greedy", is_silent)
+            make_histogram("greedy")
+            # run_algorithm(greedy_algorithm, "Greedy", is_silent)
         elif argv[2] == "beam":
             run_algorithm(beam_search, "Beam", is_silent)
         elif argv[2] == "random_exp":
