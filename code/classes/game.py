@@ -168,13 +168,13 @@ class Game():
         ax.set_title(f"{algorithm_name} Algorithm | Total Moves: {len(results)}", fontsize=14, fontweight='bold') 
 
         # Calculates the spacing needed between x-axis ticks to not overlap. (https://stackoverflow.com/questions/44863375/how-to-change-spacing-between-ticks#:~:text=The%20spacing%20between%20ticklabels%20is,to%20make%20the%20axes%20larger.)
-        tl = plt.gca().get_xticklabels()
-        maxsize = max([t.get_window_extent().width for t in tl])
-        m = 0.5
-        s = maxsize/plt.gcf().dpi*200*m
-        margin = m/plt.gcf().get_size_inches()[0]
-        plt.gcf().subplots_adjust(left=margin, right=1.-margin)
-        plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
+        # tl = plt.gca().get_xticklabels()
+        # maxsize = max([t.get_window_extent().width for t in tl])
+        # m = 0.5
+        # s = maxsize/plt.gcf().dpi*200*m
+        # margin = m/plt.gcf().get_size_inches()[0]
+        # plt.gcf().subplots_adjust(left=margin, right=1.-margin)
+        # plt.gcf().set_size_inches(s, plt.gcf().get_size_inches()[1])
 
         # Saves the graph
         time_string = datetime.now()
