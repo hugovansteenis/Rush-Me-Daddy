@@ -13,16 +13,19 @@ from experiments import depth_experiment
 
 
 def run_algorithm(algorithm, name, is_silent):
+    """Runs a specified algorithm and prints output if is_silent is False"""
     if is_silent:        
         test_game.print_grid = False
     else:
         test_game.grid.print_grid()
 
+    # Run algorithm
     algorithm(test_game)
     
     if not is_silent:
         test_game.handle_output(name)
 
+    # Create visualisations for all algorithms except random
     if len(argv) > 3 and argv[3] == "visual" and name != "Random":
         animate(game_name, name)
 
@@ -30,7 +33,7 @@ if __name__ == "__main__":
 
     from sys import argv
     
-    # Check the command input
+    # Check the command input for correct usage
     if len(argv) == 1:
         print("Usage: python rushhour.py [gameboardfile] (algorithm)")
         exit(1)
@@ -41,7 +44,7 @@ if __name__ == "__main__":
 
     # Check if the user wants to work with an algorithm or use it manually.
     if len(argv) > 2:   
-        # don't print output if there are more than three arguments given and one is "silent" 
+        # Don't print output if there are more than three arguments given and one is "silent" 
         is_silent = (len(argv) > 3) and ("silent" in argv)
     
         if argv[2] == "random":

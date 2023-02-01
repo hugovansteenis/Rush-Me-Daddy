@@ -9,7 +9,7 @@ def find_red_car(game):
     return red_car
 
 # Calculate the number of cars blocking the red car's exit path
-def heuristic_value2(game):
+def heuristic_number_blocking(game):
     """ This heuristic calculates the number of cars blocking the red cars path and returns this number in an integer """
     blocked_cars = 0
     for car in game.grid.cars:

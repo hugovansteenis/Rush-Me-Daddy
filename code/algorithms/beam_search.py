@@ -2,7 +2,7 @@
 
 import copy
 from code.classes.game import Game
-from code.algorithms.heuristic import heuristic_value2
+from code.algorithms.heuristic import heuristic_number_blocking
 
 
 def beam_search(game:Game):
@@ -44,6 +44,6 @@ def beam_search(game:Game):
                             temp_states.append(newest_game)
             
             # Keep only the w most promising states which have the least cars blocking the red car
-            temp_states = sorted(temp_states, key=lambda x: heuristic_value2(x))[:w]
+            temp_states = sorted(temp_states, key=lambda x: heuristic_number_blocking(x))[:w]
             states.extend(temp_states)
 
