@@ -36,6 +36,8 @@ De benodigde input om de volgende resultaten te krijgen is:
 ```
 python main.py Rushhour6x6_1.csv random_exp
 ```
+Random houdt in dat er willekeurige moves worden gezet tot een oplossing bereikt is.
+
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/random/6x6_1_exp_graph.png)
 <br></br>
 ## Greedy
@@ -43,6 +45,7 @@ Input:
 ```
 python main.py Rushhour6x6_2.csv greedy_exp
 ```
+Greedy houdt in dat er twee heuristieken worden toegepast. Als eerste wordt er gekeken of de rode auto 1 zet naar rechts kan, als dat niet kan wordt er gekeken of er een blokkade voor de rode auto is die 1 zet omlaag kan, als dat niet kan wordt er een willekeurige zet uitgevoerd.
 ![6x6_2_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/greedy/6x6_2_exp_graph.png)
 <br></br>
 ## Breadth First
@@ -50,6 +53,7 @@ Input:
 ```
 python main.py Rushhour6x6_1.csv breadth_exp
 ```
+Breadth First en Depth First in vergelijking tot random waarbij de eerste en de beste oplossing wordt aangenomen, zijn breadth first en depth first exhaustive. Dit betekent dat alle mogelijke states worden afgegaan wat dus de beste oplossing biedt. 
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/breadth/graph_breadth_1.png)
 <br></br>
 ## Depth First
@@ -65,4 +69,5 @@ Input:
 ```
 python main.py Rushhour6x6_2.csv beam_exp
 ```
+Beam Search is een compromis en kiest steeds de top [`w`] aantal states uit waarbij `w` gekozen kan worden. Dit geeft niet altijd de beste oplossing maar kost wel minder geheugen dan breadth first search.
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/beam/graph_beam_1.png)
