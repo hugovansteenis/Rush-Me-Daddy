@@ -4,7 +4,7 @@ Algoritmen en Heuristieken groepje met Daan, Hugo &amp; Sarah
 ## Rush Hour Case
 Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend karakter. In een veld van 6 hoog en 6 breed staat een rode auto, de jouwe, en die moet naar de uitgang die recht voor je ligt. Maar andere voertuigen versperren de weg; auto’s van twee eenheden lang en trucks van drie eenheden lang, die alleen in hun rijrichting bewogen mogen worden. Ze mogen niet draaien. De opdracht is: beweeg je auto naar buiten en schrijf een computerprogramma om dat voor je te doen.  
 
-![Rushhour Logo](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/rushhour_logo.jpeg)
+![Rushhour Logo](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/docs/rushhour_logo.jpeg)
 
 Bron: [Rush Hour](https://ah.proglab.nl/cases/rush-hour)
 
@@ -53,7 +53,8 @@ Input:
 ```
 python main.py Rushhour6x6_1.csv breadth_exp
 ```
-Breadth First en Depth First in vergelijking tot random waarbij de eerste en de beste oplossing wordt aangenomen, zijn breadth first en depth first exhaustive. Dit betekent dat alle mogelijke states worden afgegaan wat dus de beste oplossing biedt. 
+Breadth First en Depth First in vergelijking tot random waarbij de eerste en de beste oplossing wordt aangenomen, zijn breadth first en depth first exhaustive. Dit betekent dat alle mogelijke states worden afgegaan wat dus de beste oplossing biedt.
+
 ![6x6_1_exp_graph.png](https://github.com/hugovansteenis/Rush-Me-Daddy/blob/main/results/breadth/graph_breadth_1.png)
 <br></br>
 ## Depth First
